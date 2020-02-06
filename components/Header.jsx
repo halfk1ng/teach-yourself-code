@@ -11,6 +11,9 @@ const Header = () => (
     <Link href="/tutorials">
       <a>Tutorials</a>
     </Link>
+    <Link href="/saved_content">
+      <a>Saved Content</a>
+    </Link>
     <Link href="/profile">
       <a>Profile</a>
     </Link>
