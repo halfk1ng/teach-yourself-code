@@ -28,14 +28,6 @@
     "/profile": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
-    ],
-    "/saved_content": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/tutorials": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
     ]
   }
 }
