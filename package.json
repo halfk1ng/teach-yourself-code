@@ -15,7 +15,7 @@
     "@emotion/core": "^10.0.27",
     "@next/bundle-analyzer": "^9.2.1",
     "@zeit/next-sass": "^1.0.1",
-    "bulma": "^0.8.0",
+    "autoprefixer": "^9.7.4",
     "canvas": "^2.6.1",
     "cypress": "^3.8.3",
     "firebase": "^7.8.0",
@@ -24,11 +24,13 @@
     "jest": "^25.1.0",
     "next": "^9.2.1",
     "node-sass": "^4.13.1",
+    "postcss-import": "^12.0.1",
     "postgraphile": "^4.5.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-firebaseui": "^4.1.0",
     "sass": "^1.25.0",
-    "swr": "^0.1.16"
+    "swr": "^0.1.16",
+    "tailwindcss": "^1.2.0"
   }
 }

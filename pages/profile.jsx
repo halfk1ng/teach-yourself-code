@@ -6,7 +6,7 @@ export default function Profile() {
     <div>
       <Header />
       <SignInScreen />
-      <p>This is the profile page</p>
+      <p className="my-16">This is the profile page</p>
     </div>
   );
 }

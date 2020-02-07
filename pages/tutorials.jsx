@@ -4,7 +4,7 @@ export default function Tutorials() {
   return (
     <div>
       <Header />
-      <p>This is the tutorials page</p>
+      <p className="my-16">This is the tutorials page</p>
     </div>
   );
 }

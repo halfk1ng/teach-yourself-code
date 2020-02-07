@@ -6,7 +6,7 @@ export default function SavedCOntent() {
     <div>
       <Header />
       <SignInScreen />
-      <p>Saved Content</p>
+      <p className="my-16">Saved Content</p>
     </div>
   );
 }
