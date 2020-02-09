@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import SignIn from "../components/user/SignIn";
+import Profile from "../components/User/Profile";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import withData from "../hasura.config";
@@ -15,7 +15,7 @@ const query = gql`
   }
 `;
 
-const Profile = () => {
+const Account = () => {
   return (
     <Layout>
       <Query // <- Wrapping the main component with Query component from react-apollo
@@ -26,11 +26,9 @@ const Profile = () => {
           if (error) {
             return <div>Error..</div>;
           }
-
-          console.log(data);
           return (
-            <div>
-              <p className="p-16">Hello, {data.user[0].first_name}!</p>
+            <div className="p-16">
+              <Profile user={data.user[0]} />
             </div>
           );
         }}
@@ -39,4 +37,4 @@ const Profile = () => {
   );
 };
 
-export default withData(Profile);
+export default withData(Account);

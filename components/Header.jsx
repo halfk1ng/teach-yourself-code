@@ -17,8 +17,8 @@ const Header = () => (
       <Link href="/subscriptions">
         <a className="text-white m-2">Your Courses</a>
       </Link>
-      <Link href="/profile">
-        <a className="text-white m-2">Profile</a>
+      <Link href="/account">
+        <a className="text-white m-2">Account</a>
       </Link>
     </div>
   </div>
