@@ -14,8 +14,8 @@ const Header = () => (
       <Link href="/tutorials">
         <a className="text-white m-2">Tutorials</a>
       </Link>
-      <Link href="/saved_content">
-        <a className="text-white m-2">Saved Content</a>
+      <Link href="/subscriptions">
+        <a className="text-white m-2">Your Courses</a>
       </Link>
       <Link href="/profile">
         <a className="text-white m-2">Profile</a>
