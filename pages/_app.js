@@ -1,11 +1,13 @@
 import React from "react";
-import { ThemeProvider } from "emotion-theming";
-import theme from "@rebass/preset";
+import { ThemeProvider, Styled } from "theme-ui";
+import theme from "../Styles/theme";
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <Styled.root>
+        <Component {...pageProps} />
+      </Styled.root>
     </ThemeProvider>
   );
 }

@@ -7,17 +7,18 @@ import { Box, Flex } from "rebass";
 
 const Layout = ({ children }) => (
   <Flex
-    backgroundColor="blue"
+    className="main-container"
+    backgroundColor="primary"
     width="100%"
     height="100vh"
     p="2"
     alignItems="center"
     justifyContent="center"
   >
-    <Box width={1 / 5}>
+    <Box width={1 / 5} className="sidebar-container">
       <Sidebar />
     </Box>
-    <Box width={4 / 5} padding="5">
+    <Box width={4 / 5} padding="5" height="100vh" className="view-container">
       <View>{children}</View>
     </Box>
   </Flex>

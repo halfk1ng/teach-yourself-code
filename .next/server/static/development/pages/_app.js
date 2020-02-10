@@ -93,6 +93,57 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./Styles/theme.js":
+/*!*************************!*\
+  !*** ./Styles/theme.js ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  useCustomProperties: true,
+  colors: {
+    text: "#000",
+    background: "#fff",
+    primary: "#1841D3",
+    secondary: "#E94200",
+    accent: "#00BB61"
+  },
+  fonts: {
+    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    heading: "inherit"
+  },
+  styles: {
+    root: {
+      fontFamily: "body",
+      color: "text",
+      bg: "primary"
+    },
+    h1: {
+      fontSize: [4, 5, 6],
+      color: "primary"
+    },
+    a: {
+      color: "primary",
+      textDecoration: "none",
+      ":hover": {
+        color: "secondary",
+        textDecoration: "underline"
+      }
+    },
+    buttons: {
+      primary: {
+        color: "text",
+        bg: "secondary"
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./pages/_app.js":
 /*!***********************!*\
   !*** ./pages/_app.js ***!
@@ -105,10 +156,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyApp; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var emotion_theming__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! emotion-theming */ "emotion-theming");
-/* harmony import */ var emotion_theming__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(emotion_theming__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _rebass_preset__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @rebass/preset */ "@rebass/preset");
-/* harmony import */ var _rebass_preset__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_rebass_preset__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var theme_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! theme-ui */ "theme-ui");
+/* harmony import */ var theme_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(theme_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Styles_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Styles/theme */ "./Styles/theme.js");
 var _jsxFileName = "/Users/jamestucker/Personal Projects/teach_yourself_code/pages/_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -121,20 +171,26 @@ function MyApp({
   Component,
   pageProps
 }) {
-  return __jsx(emotion_theming__WEBPACK_IMPORTED_MODULE_1__["ThemeProvider"], {
-    theme: _rebass_preset__WEBPACK_IMPORTED_MODULE_2___default.a,
+  return __jsx(theme_ui__WEBPACK_IMPORTED_MODULE_1__["ThemeProvider"], {
+    theme: _Styles_theme__WEBPACK_IMPORTED_MODULE_2__["default"],
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
     },
     __self: this
-  }, __jsx(Component, _extends({}, pageProps, {
+  }, __jsx(theme_ui__WEBPACK_IMPORTED_MODULE_1__["Styled"].root, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: this
-  })));
+  }, __jsx(Component, _extends({}, pageProps, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: this
+  }))));
 }
 
 /***/ }),
@@ -151,28 +207,6 @@ module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_
 
 /***/ }),
 
-/***/ "@rebass/preset":
-/*!*********************************!*\
-  !*** external "@rebass/preset" ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@rebass/preset");
-
-/***/ }),
-
-/***/ "emotion-theming":
-/*!**********************************!*\
-  !*** external "emotion-theming" ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("emotion-theming");
-
-/***/ }),
-
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -181,6 +215,17 @@ module.exports = require("emotion-theming");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "theme-ui":
+/*!***************************!*\
+  !*** external "theme-ui" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("theme-ui");
 
 /***/ })
 

@@ -27,7 +27,7 @@ export default function Tutorials({ playlist }) {
     <Layout>
       <p>This is the tutorials page</p>
 
-      <ul>{playlistItems}</ul>
+      <ul style={{ height: "50%", overflow: "scroll" }}>{playlistItems}</ul>
     </Layout>
   );
 }
