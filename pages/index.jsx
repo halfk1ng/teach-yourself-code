@@ -1,9 +1,9 @@
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/index";
 
 export default function Index() {
   return (
     <Layout>
-      <div className="p-16">
+      <div>
         <p>Welcome home!</p>
       </div>
     </Layout>

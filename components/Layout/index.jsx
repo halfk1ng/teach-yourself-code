@@ -1,12 +1,19 @@
 import React from "react";
-import Header from "../Header";
+import Sidebar from "../Menus/Sidebar";
+import { Box, Flex } from "rebass";
 
 // Global styles and component-specific styles.
 
 const Layout = ({ children }) => (
   <div>
-    <Header />
-    <main>{children}</main>
+    <Flex>
+      <Box width={1 / 4}>
+        <Sidebar />
+      </Box>
+      <Box width={3 / 4}>
+        <main>{children}</main>
+      </Box>
+    </Flex>
   </div>
 );
 

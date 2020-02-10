@@ -14,7 +14,7 @@ function Video({ id }) {
     />
   );
 
-  return <div className="p-16">{playlistVideo}</div>;
+  return <div>{playlistVideo}</div>;
 }
 
 export default Video;

@@ -27,7 +27,7 @@ const Account = () => {
             return <div>Error..</div>;
           }
           return (
-            <div className="p-16">
+            <div>
               <Profile user={data.user[0]} />
             </div>
           );

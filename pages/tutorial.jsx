@@ -31,7 +31,7 @@ export default function Tutorial({ videos }) {
 
   return (
     <Layout>
-      <p className="my-16">Tutorial</p>
+      <p>Tutorial</p>
       <div>{selection ? <Video id={selection} /> : []}</div>
 
       <div>

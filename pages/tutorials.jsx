@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/index";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 
@@ -25,7 +25,8 @@ export default function Tutorials({ playlist }) {
 
   return (
     <Layout>
-      <p className="my-16">This is the tutorials page</p>
+      <p>This is the tutorials page</p>
+
       <ul>{playlistItems}</ul>
     </Layout>
   );
