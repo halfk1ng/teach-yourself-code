@@ -167,27 +167,31 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
+__webpack_require__(/*! dotenv */ "dotenv").config();
+
 function MyApp({
   Component,
   pageProps
 }) {
+  console.log(process.env);
   return __jsx(theme_ui__WEBPACK_IMPORTED_MODULE_1__["ThemeProvider"], {
     theme: _Styles_theme__WEBPACK_IMPORTED_MODULE_2__["default"],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 9
     },
     __self: this
   }, __jsx(theme_ui__WEBPACK_IMPORTED_MODULE_1__["Styled"].root, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 10
     },
     __self: this
   }, __jsx(Component, _extends({}, pageProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 11
     },
     __self: this
   }))));
@@ -204,6 +208,17 @@ function MyApp({
 
 module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_app.js");
 
+
+/***/ }),
+
+/***/ "dotenv":
+/*!*************************!*\
+  !*** external "dotenv" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("dotenv");
 
 /***/ }),
 

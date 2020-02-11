@@ -1,4 +1,4 @@
-import { Box } from "rebass";
+import { Box, Flex } from "rebass";
 
 const View = ({ children }) => (
   <Box
@@ -9,7 +9,7 @@ const View = ({ children }) => (
     margin="1"
     backgroundColor="background"
   >
-    {children}
+    <Flex flexDirection="row">{children}</Flex>
   </Box>
 );
 

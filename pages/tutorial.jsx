@@ -3,8 +3,9 @@ import Layout from "../components/Layout";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 import Video from "../components/Tutorial/Video";
+import { Box } from "rebass";
 
-const apiKey = `AIzaSyA8NbqKMYm6ULAfYpVZMOf9jcrK9MGAcUM`;
+const apiKey = process.env.YOUTUBE_API_KEY;
 
 Tutorial.getInitialProps = async ctx => {
   const res = await fetch(
@@ -21,7 +22,7 @@ export default function Tutorial({ videos }) {
   const videoThumbnails = videos.map(video => (
     <li key={video.id}>
       <img
-        src={video.snippet.thumbnails.high.url}
+        src={video.snippet.thumbnails.default.url}
         alt="video thumbnail"
         onClick={() => setVideo(video.snippet.resourceId.videoId)}
       />
@@ -32,11 +33,19 @@ export default function Tutorial({ videos }) {
   return (
     <Layout>
       <p>Tutorial</p>
-      <div>{selection ? <Video id={selection} /> : []}</div>
+      <Box p="2" m="2" width={2 / 3}>
+        {selection ? (
+          <Video id={selection} />
+        ) : (
+          "Select a video to get started!"
+        )}
+      </Box>
 
-      <div>
-        <ul>{videoThumbnails}</ul>
-      </div>
+      <Box p="2" m="2" width={1 / 3}>
+        <ul style={{ height: "50vh", overflow: "scroll" }}>
+          {videoThumbnails}
+        </ul>
+      </Box>
     </Layout>
   );
 }

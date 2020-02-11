@@ -2,7 +2,7 @@ import Layout from "../components/Layout/index";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 
-const apiKey = `AIzaSyA8NbqKMYm6ULAfYpVZMOf9jcrK9MGAcUM`;
+const apiKey = process.env.YOUTUBE_API_KEY;
 
 Tutorials.getInitialProps = async ctx => {
   const res = await fetch(
@@ -17,7 +17,10 @@ export default function Tutorials({ playlist }) {
   const playlistItems = playlist.map(item => (
     <li key={item.id}>
       <Link href={{ pathname: "/tutorial", query: { playlist: `${item.id}` } }}>
-        <img src={item.snippet.thumbnails.high.url} alt="playlist thumbnail" />
+        <img
+          src={item.snippet.thumbnails.default.url}
+          alt="playlist thumbnail"
+        />
       </Link>
       <h2>{item.snippet.title}</h2>
     </li>

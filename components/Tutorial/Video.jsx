@@ -9,8 +9,8 @@ function Video({ id }) {
       webkitallowfullscreen="true"
       mozallowfullscreen="true"
       allowFullScreen
-      width="600"
-      height="400"
+      width="650"
+      height="450"
     />
   );
 
