@@ -2,9 +2,9 @@ const withSass = require("@zeit/next-sass");
 
 module.exports = {
   target: "serverless",
-  ...withSass(),
+  ...withSass()
 
-  env: {
-    youTubeKey: "AIzaSyD3IF1b1VQERFQVkJSQXE2oMd6qJnkGIPk"
-  }
+  // env: {
+  //   youTubeKey: "AIzaSyD3IF1b1VQERFQVkJSQXE2oMd6qJnkGIPk"
+  // }
 };
