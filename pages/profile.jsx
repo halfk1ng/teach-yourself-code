@@ -1,8 +1,8 @@
 import Layout from "../components/Layout";
-import Profile from "../components/User/Profile";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import withData from "../hasura.config";
+import { useFetchUser } from "../lib/user";
 
 const query = gql`
   query {
@@ -15,9 +15,11 @@ const query = gql`
   }
 `;
 
-const Account = () => {
+const Profile = () => {
+  const { user, loading } = useFetchUser({ required: true });
+
   return (
-    <Layout>
+    <Layout user={user} loading={loading}>
       <Query // <- Wrapping the main component with Query component from react-apollo
         query={query}
         fetchPolicy={"cache-and-network"}
@@ -26,15 +28,11 @@ const Account = () => {
           if (error) {
             return <div>Error..</div>;
           }
-          return (
-            <div>
-              <Profile user={data.user[0]} />
-            </div>
-          );
+          return <div>Hello </div>;
         }}
       </Query>
     </Layout>
   );
 };
 
-export default withData(Account);
+export default withData(Profile);
