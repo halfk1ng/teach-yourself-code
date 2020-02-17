@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { Flex, Button } from "rebass";
 
 const Sidebar = () => (
-  <Flex className="sidebar" flexDirection="column">
+  <div className="sidebar" divDirection="column">
     <Link href="/">
       <a>Teach Yourself Code</a>
     </Link>
@@ -18,8 +17,7 @@ const Sidebar = () => (
     <Link href="/account">
       <a>Account</a>
     </Link>
-    <Button sx={{ variant: "styles.buttons.primary" }}>Click</Button>
-  </Flex>
+  </div>
 );
 
 export default Sidebar;

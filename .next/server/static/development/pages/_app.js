@@ -93,57 +93,6 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./Styles/theme.js":
-/*!*************************!*\
-  !*** ./Styles/theme.js ***!
-  \*************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  useCustomProperties: true,
-  colors: {
-    text: "#000",
-    background: "#fff",
-    primary: "#1841D3",
-    secondary: "#E94200",
-    accent: "#00BB61"
-  },
-  fonts: {
-    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: "inherit"
-  },
-  styles: {
-    root: {
-      fontFamily: "body",
-      color: "text",
-      bg: "primary"
-    },
-    h1: {
-      fontSize: [4, 5, 6],
-      color: "primary"
-    },
-    a: {
-      color: "primary",
-      textDecoration: "none",
-      ":hover": {
-        color: "secondary",
-        textDecoration: "underline"
-      }
-    },
-    buttons: {
-      primary: {
-        color: "text",
-        bg: "secondary"
-      }
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./pages/_app.js":
 /*!***********************!*\
   !*** ./pages/_app.js ***!
@@ -156,45 +105,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyApp; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var theme_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! theme-ui */ "theme-ui");
-/* harmony import */ var theme_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(theme_ui__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Styles_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Styles/theme */ "./Styles/theme.js");
 var _jsxFileName = "/Users/jamestucker/Personal Projects/teach_yourself_code/pages/_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-
-
-
-__webpack_require__(/*! dotenv */ "dotenv").config();
-
 function MyApp({
   Component,
   pageProps
 }) {
-  console.log(process.env);
-  return __jsx(theme_ui__WEBPACK_IMPORTED_MODULE_1__["ThemeProvider"], {
-    theme: _Styles_theme__WEBPACK_IMPORTED_MODULE_2__["default"],
+  return __jsx(Component, _extends({}, pageProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 4
     },
     __self: this
-  }, __jsx(theme_ui__WEBPACK_IMPORTED_MODULE_1__["Styled"].root, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    },
-    __self: this
-  }, __jsx(Component, _extends({}, pageProps, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: this
-  }))));
+  }));
 }
 
 /***/ }),
@@ -211,17 +138,6 @@ module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_
 
 /***/ }),
 
-/***/ "dotenv":
-/*!*************************!*\
-  !*** external "dotenv" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("dotenv");
-
-/***/ }),
-
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -230,17 +146,6 @@ module.exports = require("dotenv");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ "theme-ui":
-/*!***************************!*\
-  !*** external "theme-ui" ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("theme-ui");
 
 /***/ })
 

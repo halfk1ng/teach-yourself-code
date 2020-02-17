@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 import Video from "../components/Tutorial/Video";
-import { Box } from "rebass";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -33,19 +32,19 @@ export default function Tutorial({ videos }) {
   return (
     <Layout>
       <p>Tutorial</p>
-      <Box p="2" m="2" width={2 / 3}>
+      <div p="2" m="2" width={2 / 3}>
         {selection ? (
           <Video id={selection} />
         ) : (
           "Select a video to get started!"
         )}
-      </Box>
+      </div>
 
-      <Box p="2" m="2" width={1 / 3}>
+      <div p="2" m="2" width={1 / 3}>
         <ul style={{ height: "50vh", overflow: "scroll" }}>
           {videoThumbnails}
         </ul>
-      </Box>
+      </div>
     </Layout>
   );
 }

@@ -1,27 +1,19 @@
 import React from "react";
 import Sidebar from "../Menus/Sidebar";
 import View from "../View/index";
-import { Box, Flex } from "rebass";
+import "../../styles/styles.sass";
 
 // Global styles and component-specific styles.
 
 const Layout = ({ children }) => (
-  <Flex
-    className="main-container"
-    backgroundColor="primary"
-    width="100%"
-    height="100vh"
-    p="2"
-    alignItems="center"
-    justifyContent="center"
-  >
-    <Box width={1 / 5} className="sidebar-container">
+  <div className="columns">
+    <div className="column is-2">
       <Sidebar />
-    </Box>
-    <Box width={4 / 5} padding="5" height="100vh" className="view-container">
+    </div>
+    <div className="column is-10">
       <View>{children}</View>
-    </Box>
-  </Flex>
+    </div>
+  </div>
 );
 
 export default Layout;
