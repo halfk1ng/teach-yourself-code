@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const Sidebar = () => (
-  <div className="sidebar" divDirection="column">
+  <div className="sidebar is-flex" style={{ flexDirection: "column" }}>
     <Link href="/">
       <a>Teach Yourself Code</a>
     </Link>

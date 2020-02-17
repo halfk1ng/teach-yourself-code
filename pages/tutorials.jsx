@@ -2,7 +2,7 @@ import Layout from "../components/Layout/index";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 
-const apiKey = process.env.YOUTUBE_API_KEY;
+const apiKey = process.env.youTubeKey;
 
 Tutorials.getInitialProps = async ctx => {
   const res = await fetch(

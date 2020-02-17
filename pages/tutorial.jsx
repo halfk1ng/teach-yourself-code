@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 import Video from "../components/Tutorial/Video";
 
-const apiKey = process.env.YOUTUBE_API_KEY;
+const apiKey = process.env.youTubeKey;
 
 Tutorial.getInitialProps = async ctx => {
   const res = await fetch(
