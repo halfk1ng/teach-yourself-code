@@ -1,4 +1,5 @@
 import Layout from "../components/Layout/index";
+import Link from "next/link";
 import { useFetchUser } from "../lib/user";
 
 function Index() {
@@ -14,19 +15,12 @@ function Index() {
           <h3 className="is-size-1" style={{ color: "#1841D3" }}>
             Learn to code for free with our online platform!
           </h3>
-          <button
-            className="signup-btn"
-            style={{
-              backgroundColor: "#E94200",
-              color: "white",
-              borderRadius: "14px",
-              height: "35px",
-              width: "150px",
-              margin: "6em 0em"
-            }}
-          >
+          <a className="signup-btn" href="/api/login">
             CREATE AN ACCOUNT
-          </button>
+          </a>
+          <p>
+            or learn more <Link href="/about">here</Link>
+          </p>
         </div>
         <div
           className="column is-5 is-flex"

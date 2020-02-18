@@ -1,4 +1,4 @@
-@import "../styles//variables";
+@import "../styles/_variables";
 
 .topic-graphic {
   height: 150px;
@@ -8,4 +8,11 @@
 
 .topic-graphic:hover {
   filter: drop-shadow(4px 1px 2px gray);
+}
+
+.topic-view {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
