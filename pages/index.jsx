@@ -15,6 +15,7 @@ function Index() {
             Learn to code for free with our online platform!
           </h3>
           <button
+            className="signup-btn"
             style={{
               backgroundColor: "#E94200",
               color: "white",

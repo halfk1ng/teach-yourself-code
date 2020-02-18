@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function Sidebar({ user, loading }) {
   return (
     <div
@@ -29,42 +31,68 @@ function Sidebar({ user, loading }) {
           <h3 className="has-text-white is-size-4">Teach Yourself Code</h3>
         </Link>
       </div>
-      <Link href="/about">
-        <a className="has-text-white" style={{ margin: ".5em 0em" }}>
-          About
-        </a>
-      </Link>
-      <Link href="/tutorials">
-        <a className="has-text-white" style={{ margin: ".5em 0em" }}>
-          Tutorials
-        </a>
-      </Link>
-      <Link href="/subscriptions">
-        <a className="has-text-white" style={{ margin: ".5em 0em" }}>
-          Your Courses
-        </a>
-      </Link>
-      <Link href="/profile">
-        <a className="has-text-white" style={{ margin: ".5em 0em" }}>
-          Profile
-        </a>
-      </Link>
+      <div className="nav-item">
+        <FontAwesomeIcon icon="home" className="nav-icon" />
+        <Link href="/">
+          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+            Home
+          </a>
+        </Link>
+      </div>
+      <div className="nav-item">
+        <FontAwesomeIcon icon="info-circle" className="nav-icon" />
+
+        <Link href="/about">
+          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+            About
+          </a>
+        </Link>
+      </div>
+      <div className="nav-item">
+        <FontAwesomeIcon icon={["fab", "youtube"]} className="nav-icon" />
+        <Link href="/tutorials">
+          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+            Tutorials
+          </a>
+        </Link>
+      </div>
+      <div className="nav-item">
+        <FontAwesomeIcon icon="bookmark" className="nav-icon" />
+        <Link href="/subscriptions">
+          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+            Your Courses
+          </a>
+        </Link>
+      </div>
       {!loading &&
         (user ? (
           <>
-            <Link href="/profile" style={{ margin: ".5em 0em" }}>
-              <a className="has-text-white">Client-rendered profile</a>
-            </Link>
-            <a href="/api/logout">Logout</a>
+            <div className="nav-item">
+              <FontAwesomeIcon icon="user" className="nav-icon" />
+              <Link href="/profile">
+                <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+                  Profile
+                </a>
+              </Link>
+            </div>
+            <div className="nav-item">
+              <FontAwesomeIcon icon="sign-out-alt" className="nav-icon" />
+              <Link href="/api/logout" className="has-text-right">
+                <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+                  Logout
+                </a>
+              </Link>
+            </div>
           </>
         ) : (
-          <a
-            href="/api/login"
-            className="has-text-white"
-            style={{ margin: ".5em 0em" }}
-          >
-            Login
-          </a>
+          <div className="nav-item">
+            <FontAwesomeIcon icon="user" className="nav-icon" />
+            <Link href="/api/login">
+              <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+                Login
+              </a>
+            </Link>
+          </div>
         ))}
     </div>
   );
