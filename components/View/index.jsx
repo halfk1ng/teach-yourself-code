@@ -6,6 +6,7 @@ const View = ({ children }) => (
       borderRadius: "24px",
       padding: "2.75em"
     }}
+    className="content-view"
   >
     {children}
   </div>

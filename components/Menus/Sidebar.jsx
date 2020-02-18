@@ -34,7 +34,10 @@ function Sidebar({ user, loading }) {
       <div className="nav-item">
         <FontAwesomeIcon icon="home" className="nav-icon" />
         <Link href="/">
-          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+          <a
+            className="has-text-white is-size-5"
+            style={{ margin: ".5em 0em" }}
+          >
             Home
           </a>
         </Link>
@@ -43,7 +46,10 @@ function Sidebar({ user, loading }) {
         <FontAwesomeIcon icon="info-circle" className="nav-icon" />
 
         <Link href="/about">
-          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+          <a
+            className="has-text-white is-size-5"
+            style={{ margin: ".5em 0em" }}
+          >
             About
           </a>
         </Link>
@@ -51,7 +57,10 @@ function Sidebar({ user, loading }) {
       <div className="nav-item">
         <FontAwesomeIcon icon={["fab", "youtube"]} className="nav-icon" />
         <Link href="/topics">
-          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+          <a
+            className="has-text-white is-size-5"
+            style={{ margin: ".5em 0em" }}
+          >
             Topics
           </a>
         </Link>
@@ -59,7 +68,10 @@ function Sidebar({ user, loading }) {
       <div className="nav-item">
         <FontAwesomeIcon icon="bookmark" className="nav-icon" />
         <Link href="/subscriptions">
-          <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+          <a
+            className="has-text-white is-size-5"
+            style={{ margin: ".5em 0em" }}
+          >
             Your Courses
           </a>
         </Link>
@@ -70,7 +82,10 @@ function Sidebar({ user, loading }) {
             <div className="nav-item">
               <FontAwesomeIcon icon="user" className="nav-icon" />
               <Link href="/profile">
-                <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+                <a
+                  className="has-text-white is-size-5"
+                  style={{ margin: ".5em 0em" }}
+                >
                   Profile
                 </a>
               </Link>
@@ -78,7 +93,10 @@ function Sidebar({ user, loading }) {
             <div className="nav-item">
               <FontAwesomeIcon icon="sign-out-alt" className="nav-icon" />
               <Link href="/api/logout" className="has-text-right">
-                <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+                <a
+                  className="has-text-white is-size-5"
+                  style={{ margin: ".5em 0em" }}
+                >
                   Logout
                 </a>
               </Link>
@@ -88,7 +106,10 @@ function Sidebar({ user, loading }) {
           <div className="nav-item">
             <FontAwesomeIcon icon="user" className="nav-icon" />
             <Link href="/api/login">
-              <a className="has-text-white" style={{ margin: ".5em 0em" }}>
+              <a
+                className="has-text-white is-size-5"
+                style={{ margin: ".5em 0em" }}
+              >
                 Login
               </a>
             </Link>

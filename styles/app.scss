@@ -4,9 +4,10 @@
 @import "../styles/_subscriptions.scss";
 @import "../styles/_tutorials.scss";
 @import "../styles/_variables.scss";
-@import "../styles/topics.scss";
-@import "../styles/components/header.scss";
-@import "../styles/components/sidebar.scss";
+@import "../styles/_topics.scss";
+@import "../styles/components/_header.scss";
+@import "../styles/components/_sidebar.scss";
+@import "../styles/components/view.scss";
 
 .main-view {
   background-color: $bright-blue;
