@@ -50,9 +50,9 @@ function Sidebar({ user, loading }) {
       </div>
       <div className="nav-item">
         <FontAwesomeIcon icon={["fab", "youtube"]} className="nav-icon" />
-        <Link href="/tutorials">
+        <Link href="/topics">
           <a className="has-text-white" style={{ margin: ".5em 0em" }}>
-            Tutorials
+            Topics
           </a>
         </Link>
       </div>

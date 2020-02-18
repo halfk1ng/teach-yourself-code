@@ -1,0 +1,11 @@
+@import "../styles//variables";
+
+.topic-graphic {
+  height: 150px;
+  margin: 0.75em;
+  cursor: pointer;
+}
+
+.topic-graphic:hover {
+  filter: drop-shadow(4px 1px 2px gray);
+}
