@@ -92,7 +92,7 @@ function Sidebar({ user, loading }) {
             </div>
             <div className="nav-item">
               <FontAwesomeIcon icon="sign-out-alt" className="nav-icon" />
-              <Link href="/api/logout" className="has-text-right">
+              <Link href="/api/logout">
                 <a
                   className="has-text-white is-size-6"
                   style={{ margin: ".5em 0em" }}

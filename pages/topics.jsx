@@ -1,5 +1,6 @@
 import Layout from "../components/Layout/index";
 import { useFetchUser } from "../lib/user";
+import Link from "next/link";
 
 function Topics() {
   const { user, loading } = useFetchUser();
@@ -26,11 +27,13 @@ function Topics() {
             alt="javascript graphic"
             className="topic-graphic"
           />
-          <img
-            src="/static/images/react.png"
-            alt="react graphic"
-            className="topic-graphic"
-          />
+          <Link href="tutorials?topic=React">
+            <img
+              src="/static/images/react.png"
+              alt="react graphic"
+              className="topic-graphic"
+            />
+          </Link>
           <img
             src="/static/images/vue.png"
             alt="vue graphic"
