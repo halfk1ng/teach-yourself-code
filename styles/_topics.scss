@@ -1,7 +1,7 @@
 @import "../styles/_variables";
 
 .topic-graphic {
-  height: 150px;
+  height: 175px;
   margin: 0.75em;
   cursor: pointer;
 }
@@ -11,8 +11,15 @@
 }
 
 .topic-view {
-  padding: 1em;
+  padding: 1.5em;
+}
+
+.topics-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.topic-header {
+  margin: 1em;
 }
