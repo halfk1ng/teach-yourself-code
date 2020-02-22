@@ -32,6 +32,18 @@ export default function Tutorials() {
   return (
     <Layout user={user}>
       <p>This is the tutorials page</p>
+      {loading ? (
+        "Loading"
+      ) : (
+        <ul>
+          {data.playlists.map(playlist => (
+            <li key="playlist.id">
+              <img src={playlist.thumbnail} alt="video thumbnail" />
+              <h2>{playlist.title}</h2>
+            </li>
+          ))}
+        </ul>
+      )}
     </Layout>
   );
 }
