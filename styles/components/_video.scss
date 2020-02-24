@@ -1,0 +1,15 @@
+@import "../styles//variables";
+
+.video-box {
+  position: relative;
+  height: 30vh;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+}

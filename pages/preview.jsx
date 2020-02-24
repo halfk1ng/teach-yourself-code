@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import { useFetchUser } from "../lib/user";
 import Video from "../components/Tutorial/Video";
+import Description from "../components/Tutorial/Description";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
@@ -52,7 +53,6 @@ export default function Preview({ video }) {
   });
 
   const [addPlaylist] = useMutation(ADD_USER_PLAYLIST);
-  console.log(user.name);
 
   return (
     <Layout user={user}>
@@ -60,10 +60,18 @@ export default function Preview({ video }) {
         <h3 className="page-header is-size-5">Preview is loading!</h3>
       ) : (
         <div>
-          <Video video={video} className="preview-video" />
-          <p className="playlist-description is-size-7">
-            {video.snippet.description}
-          </p>
+          <div>
+            {/* TODO: This needs to the playlisy title */}
+            <h3 className="is-size-4">{video.snippet.title}</h3>
+          </div>
+          <div className="columns">
+            <div className="column is-7">
+              <Video video={video} className="preview-video" />
+            </div>
+            <div className="column is-5">
+              <Description video={video} />
+            </div>
+          </div>
           <button
             onClick={() =>
               addPlaylist({
