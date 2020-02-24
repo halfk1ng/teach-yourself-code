@@ -1,8 +1,8 @@
 # Teach Yourself Code
 
-- A free platform for learning programming that sources curated tutorials from Youtube; the main value propositions are that...
+- A free platform for learning programming that curates tutorials from Youtube; the main value propositions are that...
 
-1. Users will be able to watch videos with minimal distraction
+1. Users will be able to watch videos with minimal distraction/in a 'focus' mode
 2. Users will be able to 'subscribe' to tutorials/save them to their profile
 3. Users will be able to add notes to each video
 
