@@ -1,5 +1,7 @@
 import Layout from "../components/Layout/index";
+// import Loading from "../components/Loading";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useFetchUser } from "../lib/user";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -31,15 +33,29 @@ export default function Tutorials() {
 
   return (
     <Layout user={user}>
-      <p>This is the tutorials page</p>
       {loading ? (
-        "Loading"
+        <div>
+          <h3 className="page-header is-size-5">Content is loading!</h3>
+        </div>
       ) : (
-        <ul>
+        <ul className="playlists-list">
           {data.playlists.map(playlist => (
-            <li key="playlist.id">
-              <img src={playlist.thumbnail} alt="video thumbnail" />
-              <h2>{playlist.title}</h2>
+            <li key={playlist.id}>
+              <Link
+                href={`/preview?playlist=${playlist.playlist_id}&id=${playlist.id}`}
+              >
+                <div className="card tutorial-card">
+                  <div className="card-image">
+                    <img src={playlist.thumbnail} alt="video thumbnail" />
+                  </div>
+                  <div className="card-content">
+                    <div className="content">
+                      <h2 className="is-size-5">{playlist.title}</h2>
+                      <p>by {playlist.channel}</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             </li>
           ))}
         </ul>

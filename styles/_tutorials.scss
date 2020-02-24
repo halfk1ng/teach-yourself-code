@@ -1,0 +1,25 @@
+@import "../styles//variables";
+
+.tutorial-card {
+  max-width: 350px;
+  height: 100%;
+  margin: 1em;
+}
+
+.playlists-list {
+  display: flex;
+}
+
+.playlist-description {
+  white-space: pre-wrap;
+}
+
+.preview-video {
+  height: 20vh;
+  width: 100%;
+}
+
+.video-list {
+  height: 150px;
+  margin: 0.5em;
+}

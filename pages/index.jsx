@@ -18,9 +18,9 @@ function Index() {
           <a className="signup-btn" href="/api/login">
             CREATE AN ACCOUNT
           </a>
-          <p>
+          {/* <p>
             or learn more <Link href="/about">here</Link>
-          </p>
+          </p> */}
         </div>
         <div
           className="column is-5 is-flex"

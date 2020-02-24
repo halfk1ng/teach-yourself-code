@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
+import { useFetchUser } from "../lib/user";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 import Video from "../components/Tutorial/Video";
@@ -12,38 +13,42 @@ Tutorial.getInitialProps = async ctx => {
   );
   const json = await res.json();
   console.log(json.items);
+  console.log(ctx);
   return { videos: json.items };
 };
 
 export default function Tutorial({ videos }) {
   const [selection, setVideo] = useState();
+  const { user } = useFetchUser();
 
   const videoThumbnails = videos.map(video => (
     <li key={video.id}>
       <img
         src={video.snippet.thumbnails.default.url}
         alt="video thumbnail"
-        onClick={() => setVideo(video.snippet.resourceId.videoId)}
+        onClick={() => setVideo(video)}
+        className="video-list"
       />
-      <h2>{video.snippet.title}</h2>
+      <h2 className="is-size-7">{video.snippet.title}</h2>
     </li>
   ));
 
   return (
-    <Layout>
-      <p>Tutorial</p>
-      <div p="2" m="2" width={2 / 3}>
-        {selection ? (
-          <Video id={selection} />
-        ) : (
-          "Select a video to get started!"
-        )}
-      </div>
+    <Layout user={user}>
+      <div className="columns">
+        <div className="column is-7 has-text-centered">
+          {selection ? (
+            <Video video={selection} />
+          ) : (
+            "Select a video to get started!"
+          )}
+        </div>
 
-      <div p="2" m="2" width={1 / 3}>
-        <ul style={{ height: "50vh", overflow: "scroll" }}>
-          {videoThumbnails}
-        </ul>
+        <div className="column is-5 has-text-centered">
+          <ul style={{ height: "60vh", overflow: "scroll" }}>
+            {videoThumbnails}
+          </ul>
+        </div>
       </div>
     </Layout>
   );

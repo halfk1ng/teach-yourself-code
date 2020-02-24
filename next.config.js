@@ -4,8 +4,7 @@ const withCSS = require("@zeit/next-css");
 
 require("dotenv").config();
 
-module.exports = withImages();
-module.exports = withCSS();
+module.exports = withImages(withCSS());
 
 module.exports = {
   target: "serverless",

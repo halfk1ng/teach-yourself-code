@@ -65,17 +65,20 @@ function Sidebar({ user, loading }) {
           </a>
         </Link>
       </div>
-      <div className="nav-item">
-        <FontAwesomeIcon icon="bookmark" className="nav-icon" />
-        <Link href="/subscriptions">
-          <a
-            className="has-text-white is-size-6"
-            style={{ margin: ".5em 0em" }}
-          >
-            Your Courses
-          </a>
-        </Link>
-      </div>
+      {user ? (
+        <div className="nav-item">
+          <FontAwesomeIcon icon="bookmark" className="nav-icon" />
+          <Link href="/subscriptions">
+            <a
+              className="has-text-white is-size-6"
+              style={{ margin: ".5em 0em" }}
+            >
+              Your Courses
+            </a>
+          </Link>
+        </div>
+      ) : null}
+
       {!loading &&
         (user ? (
           <>
