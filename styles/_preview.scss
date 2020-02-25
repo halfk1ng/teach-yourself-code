@@ -1,0 +1,43 @@
+@import "../styles//variables";
+
+.preview-container {
+  height: 100%;
+  overflow: scroll;
+}
+
+.top-preview-row {
+  margin: 1em 0em;
+  background: lightgray;
+}
+
+.description-column {
+  overflow: scroll;
+}
+
+.description-text {
+  padding: 1em;
+}
+
+// .video-column {
+
+// }
+
+.add-course-btn {
+  color: white;
+  background: $orchard-orange;
+  border-radius: 7px;
+}
+
+.tutorial-playlist-container {
+  margin: 1em 0em;
+}
+
+.video-list-description-row {
+  margin: 1em 0em;
+  padding: 1em 0em;
+  border-top: 0.5px solid lightgray;
+  .description-column {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
