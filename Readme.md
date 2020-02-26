@@ -10,5 +10,5 @@
 
 Priority TODOS:
 
--[] Move GraphQL queries to separate modules.
--[] Institute global state for current_user data
+[ ] Move GraphQL queries to separate modules.
+[ ] Institute global state for current_user data
