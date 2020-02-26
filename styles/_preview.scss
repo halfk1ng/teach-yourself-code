@@ -32,12 +32,27 @@
   margin: 1em 0em;
 }
 
+.tutorial-playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .video-list-description-row {
-  margin: 1em 0em;
-  padding: 1em 0em;
-  border-top: 0.5px solid lightgray;
+  width: 95%;
+  margin: 2em 0em;
+  border: 0.25px solid lightgray;
+  border-radius: 7px;
+  box-shadow: 5px 12px 10px lightgrey;
   .description-column {
     text-overflow: ellipsis;
     overflow: hidden;
   }
+}
+
+.video-list-description {
+  padding: 1.75em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

@@ -104,13 +104,8 @@ export default function Tutorial({ videos }) {
   // loop through videos to create the table of contents located under the main video
   const videoList = videos.slice(1).map(v => (
     <li key={v.id} className="video-list-description-row">
-      <div>
-        <h3 style={{ margin: ".75em 0em" }}>
-          <b>{v.snippet.title}</b>
-        </h3>
-      </div>
       <div className="columns">
-        <div className="column is-2">
+        <div className="column is-4">
           <img
             src={v.snippet.thumbnails.high.url}
             alt="video thumbnail"
@@ -118,9 +113,12 @@ export default function Tutorial({ videos }) {
             class="video-thumbnail"
           />
         </div>
-        <div className="column description-column">
-          <p className=" is-size-6-desktop is-size-7-mobile">
-            <Linkify>{v.snippet.description}</Linkify>
+        <div className="column video-list-description">
+          <h3 className="is-size-5">
+            <b>{v.snippet.title}</b>
+          </h3>
+          <p className=" is-size-6-desktop is-7-mobile">
+            {<Linkify>{v.snippet.description}</Linkify>}
           </p>
         </div>
       </div>
