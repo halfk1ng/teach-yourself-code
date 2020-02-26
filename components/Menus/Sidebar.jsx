@@ -11,7 +11,14 @@ function Sidebar({ user, loading }) {
         margin: "8em 1em"
       }}
     >
-      <div className="brand-name is-flex">
+      <div
+        className="brand-name is-flex"
+        style={{
+          alignItems: "center",
+          marginBottom: "7em",
+          marginLeft: ".25em"
+        }}
+      >
         <div
           className="logo-bg is-flex"
           style={{
@@ -21,14 +28,13 @@ function Sidebar({ user, loading }) {
             borderRadius: "7px",
             justifyContent: "center",
             alignItems: "center",
-            marginBottom: "7.5em",
-            marginRight: "1em"
+            marginRight: "0.75em"
           }}
         >
-          <h3 className="has-text-white is-size-5">T</h3>
+          <h3 className="has-text-white is-size-6">T</h3>
         </div>
         <Link href="/">
-          <h3 className="has-text-white is-size-5">Teach Yourself Code</h3>
+          <h3 className="has-text-white is-size-6">Teach Yourself Code</h3>
         </Link>
       </div>
       <div className="nav-item">

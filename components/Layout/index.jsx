@@ -7,11 +7,11 @@ import "../../styles/app.scss";
 
 const Layout = ({ user, loading = false, children }) => (
   <div className="main-view is-flex">
-    <div className="columns" style={{ height: "100%", width: "100%" }}>
-      <div className="column is-one-fifth">
+    <div className="columns is-2" style={{ height: "100%", width: "100%" }}>
+      <div className="column">
         <Sidebar user={user} loading={loading} className="is-flex" />
       </div>
-      <div className="column is-four-fifths" style={{ padding: "1.75em" }}>
+      <div className="column is-10" style={{ padding: "1.75em" }}>
         <View>{children}</View>
       </div>
     </div>
