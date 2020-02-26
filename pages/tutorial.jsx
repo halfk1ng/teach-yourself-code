@@ -15,9 +15,6 @@ Tutorial.getInitialProps = async ctx => {
     `https://www.googleapis.com/youtube/v3/playlistItems?part=id%2C%20snippet&maxResults=50&playlistId=${ctx.query.playlist}&key=${apiKey}`
   );
   const json = await res.json();
-  console.log(ctx);
-  console.log(json);
-
   return { videos: json.items };
 };
 
@@ -32,29 +29,69 @@ const FETCH_USER = gql`
   }
 `;
 
-const ADD_USER_PLAYLIST = gql`
-  mutation AddUserPlaylist($playlist_id: Int, $user_id: Int) {
-    insert_user_playlists(
-      objects: { playlist_id: $playlist_id, user_id: $user_id }
+const DELETE_PLAYLIST = gql`
+  mutation DeletePlaylist($id: Int) {
+    delete_user_playlists(where: { playlist_id: { _eq: $id } }) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
+const ADD_NOTE = gql`
+  mutation MyMutation($note: String, $user_id: Int, $video_id: String) {
+    insert_notes(
+      objects: { note: $note, user_id: $user_id, video_id: $video_id }
     ) {
       returning {
         id
-        playlist_id
+        note
+        video_id
         user_id
       }
     }
   }
 `;
 
-export default function Tutorial({ video, videos }) {
+const FETCH_NOTES = gql`
+  query fetchNotes($user_id: Int, $video_id: String) {
+    notes(where: { user_id: { _eq: $user_id }, video_id: { _eq: $video_id } }) {
+      note
+    }
+  }
+`;
+
+export default function Tutorial({ videos }) {
+  // local state
+  const [selection, setVideo] = useState(videos[0]);
+  const [toggled, toggleNoteInput] = useState(false);
+  const [note, setNote] = useState("");
+
   const { user } = useFetchUser();
   const router = useRouter();
 
+  // methods for accessing GraphQL queries/mutations
   const { loading, error, data } = useQuery(FETCH_USER, {
     variables: { email: user.name }
   });
 
-  const [selection, setVideo] = useState(videos[0]);
+  const [deletePlaylist] = useMutation(DELETE_PLAYLIST);
+  const [addNote] = useMutation(ADD_NOTE);
+
+  // const {
+  //   loading: notesQueryLoading,
+  //   error: notesQueryError,
+  //   data: notes
+  // } = useQuery(FETCH_NOTES, {
+  //   variables: {
+  //     user_id: data.users[0].id,
+  //     video_id: selection.snippet.resourceId.videoId
+  //   }
+  // });
+
+  // console.log(data.users[0].id);
+  // console.log(notes);
 
   // methods used for the 'next' and 'previous' video buttons
   const nextVideo = videos.find(
@@ -90,6 +127,8 @@ export default function Tutorial({ video, videos }) {
     </li>
   ));
 
+  // const notesList = notes.map(note => <li key={note.id}>{note.note}</li>);
+
   return (
     <Layout user={user}>
       {loading ? (
@@ -105,21 +144,64 @@ export default function Tutorial({ video, videos }) {
             </h3>
           </div>
           <div className="columns top-preview-row">
-            <div className="column video-column is-7">
+            <div className="column video-column is-9">
               <Video video={selection} className="preview-video" />
               <button onClick={() => setVideo(previousVideo)}>Previous</button>
               <button onClick={() => setVideo(nextVideo)}>Next</button>
             </div>
-            <div className="column description-column is-5">
-              <Description video={selection} />
+            <div className="column description-column is-3">
+              <div className="is-flex">
+                <h3>Your Notes</h3>
+                {!toggled ? (
+                  <button
+                    className="add-note-btn button"
+                    onClick={() => toggleNoteInput(true)}
+                  >
+                    add a note
+                  </button>
+                ) : (
+                  <button
+                    className="add-note-btn button"
+                    onClick={() =>
+                      addNote({
+                        variables: {
+                          note: note,
+                          user_id: data.users[0].id,
+                          video_id: selection.snippet.resourceId.videoId
+                        }
+                      }).then(() => toggleNoteInput(false))
+                    }
+                  >
+                    save note
+                  </button>
+                )}
+                {/* <ul>{notesList}</ul> */}
+              </div>
+              {toggled ? (
+                <input
+                  type="textarea"
+                  onChange={e => setNote(e.target.value)}
+                />
+              ) : null}
             </div>
           </div>
-          <button className="button add-course-btn">Remove Course</button>
+          <button
+            className="button add-course-btn"
+            onClick={() =>
+              deletePlaylist({
+                variables: {
+                  id: router.query.id
+                }
+              })
+            }
+          >
+            Remove Course
+          </button>
           <br />
           <br />
           <div className="tutorial-playlist-container">
             <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
-              <b>Tutorial Directory</b>
+              <b>Table of Contents</b>
             </h3>
             <ul className="tutorial-playlist">{videoList}</ul>
           </div>

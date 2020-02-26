@@ -7,3 +7,8 @@
 3. Users will be able to add notes to each video
 
 - Currently being built with Next.js (React), Postgres, Hasura Engine, Apollo-GraphQL, Bulma, and Auth0.
+
+Priority TODOS:
+
+-[] Move GraphQL queries to separate modules.
+-[] Institute global state for current_user data

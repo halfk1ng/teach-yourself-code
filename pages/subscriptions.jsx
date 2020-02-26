@@ -39,7 +39,9 @@ export default function Subscriptions() {
         <ul>
           {data.user_playlists.map(up => (
             <li key={up.playlist.id}>
-              <Link href={`/tutorial?playlist=${up.playlist.playlist_id}`}>
+              <Link
+                href={`/tutorial?playlist=${up.playlist.playlist_id}&id=${up.playlist.id}`}
+              >
                 <div className="card tutorial-card">
                   <div className="card-image">
                     <img src={up.playlist.thumbnail} alt="video thumbnail" />

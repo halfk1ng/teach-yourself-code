@@ -1,5 +1,4 @@
 function Video({ video }) {
-  console.log(video);
   const playlistVideo = (
     <div className="video-box">
       <iframe

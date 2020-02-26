@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { useFetchUser } from "../lib/user";
 import Video from "../components/Tutorial/Video";
 import Description from "../components/Tutorial/Description";
@@ -106,7 +106,11 @@ export default function Preview({ video, videos }) {
                   playlist_id: router.query.id,
                   user_id: data.users[0].id
                 }
-              })
+              }).then(() =>
+                Router.push(
+                  `/tutorial?playlist=${router.query.playlist}&id=${router.query.id}`
+                )
+              )
             }
             className="button add-course-btn"
           >
@@ -116,7 +120,7 @@ export default function Preview({ video, videos }) {
           <br />
           <div className="tutorial-playlist-container">
             <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
-              <b>Tutorial Directory</b>
+              <b>Table of Contents</b>
             </h3>
             <ul className="tutorial-playlist">{videoList}</ul>
           </div>
