@@ -5,6 +5,7 @@ import Video from "../components/Tutorial/Video";
 import Description from "../components/Tutorial/Description";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+import { withApollo } from "./_app";
 import Linkify from "react-linkify";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
@@ -45,7 +46,7 @@ const ADD_USER_PLAYLIST = gql`
   }
 `;
 
-export default function Preview({ video, videos }) {
+function Preview({ video, videos }) {
   const { user } = useFetchUser();
   const router = useRouter();
 
@@ -127,3 +128,5 @@ export default function Preview({ video, videos }) {
     </Layout>
   );
 }
+
+export default withApollo({ ssr: true })(Preview);

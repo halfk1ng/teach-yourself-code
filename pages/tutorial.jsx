@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useFetchUser } from "../lib/user";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+import { withApollo } from "./_app";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -63,7 +64,7 @@ const FETCH_NOTES = gql`
   }
 `;
 
-export default function Tutorial({ videos }) {
+function Tutorial({ videos }) {
   // local state
   const [selection, setVideo] = useState(videos[0]);
   const [noteToggled, toggleNoteInput] = useState(false);
@@ -210,3 +211,5 @@ export default function Tutorial({ videos }) {
     </Layout>
   );
 }
+
+export default withApollo({ ssr: true })(Tutorial);

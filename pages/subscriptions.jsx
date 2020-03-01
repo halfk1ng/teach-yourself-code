@@ -4,6 +4,7 @@ import TutorialCard from "../components/Tutorial/TutorialCard";
 import { useFetchUser } from "../lib/user";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import { withApollo } from "./_app";
 
 const FETCH_USER_PLAYLISTS = gql`
   query GetUserPlaylists {
@@ -20,7 +21,7 @@ const FETCH_USER_PLAYLISTS = gql`
   }
 `;
 
-export default function Subscriptions() {
+function Subscriptions() {
   const { user } = useFetchUser({ required: true });
   const { loading, error, data } = useQuery(FETCH_USER_PLAYLISTS);
 
@@ -48,3 +49,5 @@ export default function Subscriptions() {
     </Layout>
   );
 }
+
+export default withApollo()(Subscriptions);

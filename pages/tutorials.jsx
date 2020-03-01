@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useFetchUser } from "../lib/user";
 import { useQuery } from "@apollo/react-hooks";
+import { withApollo } from "./_app";
 import gql from "graphql-tag";
 
 const FETCH_PLAYLISTS = gql`
@@ -20,7 +21,7 @@ const FETCH_PLAYLISTS = gql`
   }
 `;
 
-export default function Tutorials() {
+function Tutorials() {
   const { user } = useFetchUser();
   const router = useRouter();
 
@@ -63,3 +64,5 @@ export default function Tutorials() {
     </Layout>
   );
 }
+
+export default withApollo({ ssr: true })(Tutorials);
