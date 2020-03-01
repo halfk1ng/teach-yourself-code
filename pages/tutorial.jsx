@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import Router from "next/router";
 import Layout from "../components/Layout";
+import Video from "../components/Tutorial/Video";
+import VideoCard from "../components/Tutorial/VideoCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { useFetchUser } from "../lib/user";
-import Video from "../components/Tutorial/Video";
-import Description from "../components/Tutorial/Description";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import Linkify from "react-linkify";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -65,8 +66,10 @@ const FETCH_NOTES = gql`
 export default function Tutorial({ videos }) {
   // local state
   const [selection, setVideo] = useState(videos[0]);
-  const [toggled, toggleNoteInput] = useState(false);
+  const [noteToggled, toggleNoteInput] = useState(false);
   const [note, setNote] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
   const { user } = useFetchUser();
   const router = useRouter();
@@ -102,28 +105,7 @@ export default function Tutorial({ videos }) {
   );
 
   // loop through videos to create the table of contents located under the main video
-  const videoList = videos.slice(1).map(v => (
-    <li key={v.id} className="video-list-description-row">
-      <div className="columns">
-        <div className="column is-4">
-          <img
-            src={v.snippet.thumbnails.high.url}
-            alt="video thumbnail"
-            onClick={() => setVideo(v)}
-            class="video-thumbnail"
-          />
-        </div>
-        <div className="column video-list-description">
-          <h3 className="is-size-5">
-            <b>{v.snippet.title}</b>
-          </h3>
-          <p className=" is-size-6-desktop is-7-mobile">
-            {<Linkify>{v.snippet.description}</Linkify>}
-          </p>
-        </div>
-      </div>
-    </li>
-  ));
+  const videoList = videos.slice(1).map(v => <VideoCard v={v} />);
 
   // const notesList = notes.map(note => <li key={note.id}>{note.note}</li>);
 
@@ -134,7 +116,7 @@ export default function Tutorial({ videos }) {
           <b>Preview is loading!</b>
         </h3>
       ) : (
-        <div className="preview-container">
+        <div className="tutorial-container">
           <div>
             {/* TODO: This needs to the playlisy title */}
             <h3 className="is-size-4">
@@ -150,7 +132,7 @@ export default function Tutorial({ videos }) {
             <div className="column description-column is-3">
               <div className="is-flex">
                 <h3>Your Notes</h3>
-                {!toggled ? (
+                {!noteToggled ? (
                   <button
                     className="add-note-btn button"
                     onClick={() => toggleNoteInput(true)}
@@ -175,7 +157,7 @@ export default function Tutorial({ videos }) {
                 )}
                 {/* <ul>{notesList}</ul> */}
               </div>
-              {toggled ? (
+              {noteToggled ? (
                 <input
                   type="textarea"
                   onChange={e => setNote(e.target.value)}
@@ -190,18 +172,38 @@ export default function Tutorial({ videos }) {
                 variables: {
                   id: router.query.id
                 }
-              })
+              }).then(() => Router.push("/subscriptions"))
             }
           >
             Remove Course
           </button>
           <br />
           <br />
-          <div className="tutorial-playlist-container">
-            <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
-              <b>Table of Contents</b>
-            </h3>
-            <ul className="tutorial-playlist">{videoList}</ul>
+          <div
+            className={isOpen ? "dropdown is-active" : "dropdown"}
+            style={{ width: "100%" }}
+          >
+            <div className="dropdown-trigger">
+              <button
+                className="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu6"
+                onClick={toggleDropdown}
+              >
+                <span>{isOpen ? "Close Playlist" : "View Playlist"}</span>
+                <span className="icon is-small">
+                  <FontAwesomeIcon
+                    icon="caret-down"
+                    className="dropdown-icon"
+                  />
+                </span>
+              </button>
+            </div>
+            <div className="dropdown-menu" id="dropdown-menu6" role="menu">
+              <div className="tutorial-playlist-container">
+                <ul className="tutorial-playlist">{videoList}</ul>
+              </div>
+            </div>
           </div>
         </div>
       )}

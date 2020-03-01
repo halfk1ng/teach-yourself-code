@@ -13,12 +13,21 @@ import {
   faInfoCircle,
   faUser,
   faBookmark,
-  faSignOutAlt
+  faSignOutAlt,
+  faCaretDown
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faHome, faInfoCircle, faUser, faYoutube, faBookmark, faSignOutAlt);
+library.add(
+  faHome,
+  faInfoCircle,
+  faUser,
+  faYoutube,
+  faBookmark,
+  faSignOutAlt,
+  faCaretDown
+);
 
 const authToken = process.env.HASURA_GRAPHQL_JWT_SECRET;
 const adminSecret = `Megan90591`;

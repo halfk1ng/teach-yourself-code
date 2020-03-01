@@ -23,3 +23,15 @@
   height: 150px;
   margin: 0.5em;
 }
+
+.tutorial-container {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+.dropdown-icon {
+  height: 24px;
+  width: 24px;
+  color: $dark-knight;
+}

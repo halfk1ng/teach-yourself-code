@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
+import TutorialCard from "../components/Tutorial/TutorialCard";
 import { useFetchUser } from "../lib/user";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -39,21 +40,7 @@ export default function Subscriptions() {
         <ul>
           {data.user_playlists.map(up => (
             <li key={up.playlist.id}>
-              <Link
-                href={`/tutorial?playlist=${up.playlist.playlist_id}&id=${up.playlist.id}`}
-              >
-                <div className="card tutorial-card">
-                  <div className="card-image">
-                    <img src={up.playlist.thumbnail} alt="video thumbnail" />
-                  </div>
-                  <div className="card-content">
-                    <div className="content">
-                      <h2 className="is-size-5">{up.playlist.title}</h2>
-                      <p>by {up.playlist.channel}</p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+              <TutorialCard tutorial={up} />
             </li>
           ))}
         </ul>

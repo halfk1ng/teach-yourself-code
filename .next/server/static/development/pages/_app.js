@@ -136,7 +136,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["config"].autoAddCss = false;
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faHome"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faInfoCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUser"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faYoutube"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faSignOutAlt"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faHome"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faInfoCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUser"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faYoutube"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faSignOutAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCaretDown"]);
 const authToken = process.env.HASURA_GRAPHQL_JWT_SECRET;
 const adminSecret = `Megan90591`;
 
@@ -162,13 +162,13 @@ function MyApp({
     client: client,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 52
     },
     __self: this
   }, __jsx(Component, _extends({}, pageProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 53
     },
     __self: this
   })));

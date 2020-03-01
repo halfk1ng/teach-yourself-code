@@ -22,6 +22,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "apollo-boost": "^0.4.7",
+    "apollo-cache-inmemory": "^1.6.5",
     "bulma": "^0.8.0",
     "cross-fetch": "^3.0.4",
     "dotenv": "^8.2.0",
@@ -35,7 +36,6 @@
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-linkify": "^1.0.0-alpha",
-    "react-spinners-css": "^1.1.7"
+    "react-linkify": "^1.0.0-alpha"
   }
 }
