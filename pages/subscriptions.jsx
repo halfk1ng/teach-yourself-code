@@ -21,11 +21,7 @@ const FETCH_USER_PLAYLISTS = gql`
 `;
 
 function Subscriptions(user) {
-  // const { user } = useFetchUser({ required: true });
-
   const { loading, error, data } = useQuery(FETCH_USER_PLAYLISTS);
-
-  console.log(user);
 
   return (
     <Layout user={user}>

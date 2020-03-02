@@ -3,7 +3,6 @@ import Layout from "../components/Layout/index";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useQuery } from "@apollo/react-hooks";
-import { withApollo } from "../lib/_app";
 import gql from "graphql-tag";
 
 const FETCH_PLAYLISTS = gql`
@@ -63,4 +62,4 @@ function Tutorials(user) {
   );
 }
 
-export default withApollo({ ssr: true })(Tutorials);
+export default Tutorials;

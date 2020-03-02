@@ -5,7 +5,6 @@ import Video from "../components/Tutorial/Video";
 import Description from "../components/Tutorial/Description";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { withApollo } from "../lib/_app";
 import Linkify from "react-linkify";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
@@ -56,7 +55,26 @@ function Preview({ video, videos }) {
 
   console.log(videos);
 
-  const [addPlaylist] = useMutation(ADD_USER_PLAYLIST);
+  const [addPlaylist] = useMutation(ADD_USER_PLAYLIST, {
+    refetchQueries: [
+      {
+        query: gql`
+          query GetUserPlaylists {
+            user_playlists(where: { user_id: { _eq: 2 } }) {
+              playlist {
+                id
+                title
+                description
+                thumbnail
+                playlist_id
+                channel
+              }
+            }
+          }
+        `
+      }
+    ]
+  });
 
   const videoList = videos.slice(1).map(v => (
     <li key={v.id} className="video-list-description-row">
@@ -129,4 +147,4 @@ function Preview({ video, videos }) {
   );
 }
 
-export default withApollo({ ssr: true })(Preview);
+export default Preview;
