@@ -1,6 +1,8 @@
 import Layout from "../components/Layout/index";
 import Link from "next/link";
 import { useFetchUser } from "../lib/user";
+import gql from "graphql-tag";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 function Index() {
   const { user, loading } = useFetchUser();

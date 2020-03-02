@@ -2,9 +2,8 @@ import Layout from "../components/Layout/index";
 // import Loading from "../components/Loading";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useFetchUser } from "../lib/user";
 import { useQuery } from "@apollo/react-hooks";
-import { withApollo } from "./_app";
+import { withApollo } from "../lib/_app";
 import gql from "graphql-tag";
 
 const FETCH_PLAYLISTS = gql`
@@ -21,8 +20,7 @@ const FETCH_PLAYLISTS = gql`
   }
 `;
 
-function Tutorials() {
-  const { user } = useFetchUser();
+function Tutorials(user) {
   const router = useRouter();
 
   const { loading, error, data } = useQuery(FETCH_PLAYLISTS, {
