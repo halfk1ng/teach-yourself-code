@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 
 const FETCH_NOTES = gql`
   query fetchNotes($user_id: String, $video_id: String) {
@@ -26,16 +26,12 @@ const ADD_NOTE = gql`
 `;
 
 export default function NotesList({ user, selection }) {
-  const [noteToggled, toggleNoteInput] = useState(false);
-  const [note, setNote] = useState("");
-
   const { loading, error, data, refetch } = useQuery(FETCH_NOTES, {
     variables: {
       user_id: user.sub,
       video_id: selection.snippet.resourceId.videoId
     }
   });
-  const [addNote] = useMutation(ADD_NOTE);
 
   console.log(data);
 

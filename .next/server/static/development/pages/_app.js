@@ -225,7 +225,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__["config"].autoAddCss = false;
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHome"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faInfoCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUser"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faYoutube"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBookmark"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSignOutAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCaretDown"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHome"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faInfoCircle"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUser"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faYoutube"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBookmark"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSignOutAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCaretDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faArrowAltCircleLeft"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faArrowAltCircleRight"]);
 const authToken = process.env.HASURA_GRAPHQL_JWT_SECRET;
 const adminSecret = `Megan90591`;
 
@@ -254,14 +254,14 @@ function MyApp({
     client: client,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 59
     },
     __self: this
   }, __jsx(Component, _extends({}, pageProps, {
     user: user,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 60
     },
     __self: this
   })));

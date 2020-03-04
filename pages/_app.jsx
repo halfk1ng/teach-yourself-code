@@ -15,7 +15,9 @@ import {
   faUser,
   faBookmark,
   faSignOutAlt,
-  faCaretDown
+  faCaretDown,
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
@@ -27,7 +29,9 @@ library.add(
   faYoutube,
   faBookmark,
   faSignOutAlt,
-  faCaretDown
+  faCaretDown,
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight
 );
 
 const authToken = process.env.HASURA_GRAPHQL_JWT_SECRET;

@@ -18,7 +18,6 @@ const ADD_NOTE = gql`
 `;
 
 function CreateNote({ video, user }) {
-  const [noteToggled, toggleNoteInput] = useState(false);
   const [note, setNote] = useState("");
   const [addNote] = useMutation(ADD_NOTE, {
     refetchQueries: [
@@ -44,38 +43,29 @@ function CreateNote({ video, user }) {
   });
 
   return (
-    <div className="notes-actions">
-      <div className="note-btn">
-        {!noteToggled ? (
-          <button
-            className="add-note-btn button"
-            onClick={() => toggleNoteInput(true)}
-          >
-            add a note
-          </button>
-        ) : (
-          <button
-            className="add-note-btn button"
-            onClick={() =>
-              addNote({
-                variables: {
-                  note: note,
-                  user_id: user.sub,
-                  video_id: video.snippet.resourceId.videoId
-                }
-              }).then(() => {
-                toggleNoteInput(false);
-              })
-            }
-          >
-            save note
-          </button>
-        )}
+    <div className="columns">
+      <div className="column">
+        <input
+          type="textarea"
+          onChange={e => setNote(e.target.value)}
+          className="note-input"
+        />
       </div>
-      <div className="note-input">
-        {noteToggled ? (
-          <input type="textarea" onChange={e => setNote(e.target.value)} />
-        ) : null}
+      <div className="column is-3 has-text-right">
+        <button
+          className="add-note-btn button"
+          onClick={() =>
+            addNote({
+              variables: {
+                note: note,
+                user_id: user.sub,
+                video_id: video.snippet.resourceId.videoId
+              }
+            })
+          }
+        >
+          save note
+        </button>
       </div>
     </div>
   );

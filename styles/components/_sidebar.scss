@@ -1,10 +1,17 @@
 @import "../variables";
 
+.sidebar {
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
 .nav-icon {
   height: 24px;
   width: 24px;
-  color: $gecko-green;
+  color: $rueful-rose;
   margin-right: 0.5em;
+  cursor: pointer;
 }
 
 .nav-item {
@@ -16,4 +23,10 @@
 
 .brand-name {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+  .nav-text {
+    display: none;
+  }
 }

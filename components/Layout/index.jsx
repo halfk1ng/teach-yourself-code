@@ -7,8 +7,11 @@ import "../../styles/app.scss";
 
 const Layout = ({ user, loading = false, children }) => (
   <div className="main-view is-flex">
-    <div className="columns is-2" style={{ height: "100%", width: "100%" }}>
-      <div className="column">
+    <div className="columns is-2" style={{ width: "100%" }}>
+      <div
+        className="column is-flex is-hidden-mobile"
+        style={{ justifyContent: "center" }}
+      >
         <Sidebar user={user} loading={loading} className="is-flex" />
       </div>
       <div className="column is-10" style={{ padding: "1.75em" }}>

@@ -11,10 +11,10 @@ function Index() {
     <Layout user={user} loading={loading}>
       <div className="home-view columns" style={{ height: "100%" }}>
         <div
-          className="column is-7 is-flex"
+          className="column is-6 is-flex"
           style={{ flexDirection: "column", justifyContent: "center" }}
         >
-          <h3 className="is-size-1" style={{ color: "#1841D3" }}>
+          <h3 className="is-size-2" style={{ color: "#1a1b25" }}>
             Learn to code for free with our online platform!
           </h3>
           <a className="signup-btn" href="/api/login">
@@ -24,11 +24,8 @@ function Index() {
             or learn more <Link href="/about">here</Link>
           </p> */}
         </div>
-        <div
-          className="column is-5 is-flex"
-          style={{ justifyContent: "center" }}
-        >
-          <img src="/static/images/learning.svg" alt="" />
+        <div className="column is-flex" style={{ justifyContent: "center" }}>
+          <img src="/static/images/girl_coding.svg" alt="" />
         </div>
       </div>
     </Layout>

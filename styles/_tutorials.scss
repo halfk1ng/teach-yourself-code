@@ -19,6 +19,12 @@
   width: 100%;
 }
 
+.tutorial-video {
+  height: 20vh;
+  width: 100%;
+  position: absolute;
+}
+
 .video-list {
   height: 150px;
   margin: 0.5em;
@@ -38,4 +44,21 @@
 
 .notes-list {
   flex-direction: column;
+}
+
+// .video-column {
+//   position: relative;
+// }
+
+.next-video-btn {
+  background: transparent;
+}
+
+.previous-video-btn {
+  background: transparent;
+}
+
+.video-nav-icon {
+  height: 24px;
+  width: 24px;
 }

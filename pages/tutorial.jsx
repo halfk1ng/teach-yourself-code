@@ -3,6 +3,7 @@ import Router from "next/router";
 import Layout from "../components/Layout";
 import Video from "../components/Video/Video";
 import VideoCard from "../components/Video/VideoCard";
+import CreateNote from "../components/Notes/CreateNote";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import gql from "graphql-tag";
@@ -82,9 +83,25 @@ function Tutorial({ videos, user }) {
         </div>
         <div className="columns top-preview-row">
           <div className="column video-column is-7">
-            <Video video={selection} user={user} className="preview-video" />
-            <button onClick={() => setVideo(previousVideo)}>Previous</button>
-            <button onClick={() => setVideo(nextVideo)}>Next</button>
+            <Video video={selection} user={user} className="tutorial-video" />
+            <button
+              onClick={() => setVideo(previousVideo)}
+              className="previous-video-btn"
+            >
+              <FontAwesomeIcon
+                icon="arrow-alt-circle-left"
+                className="video-nav-icon"
+              />
+            </button>
+            <button
+              onClick={() => setVideo(nextVideo)}
+              className="next-video-btn"
+            >
+              <FontAwesomeIcon
+                icon="arrow-alt-circle-right"
+                className="video-nav-icon"
+              />
+            </button>
           </div>
           <div className="column description-column is-5">
             <div className="is-flex" style={{ flexDirection: "column" }}>
@@ -92,6 +109,8 @@ function Tutorial({ videos, user }) {
             </div>
           </div>
         </div>
+        <CreateNote user={user} video={selection} />
+
         <button
           className="button add-course-btn"
           onClick={() =>

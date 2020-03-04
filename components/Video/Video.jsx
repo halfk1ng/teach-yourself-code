@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import CreateNote from "../Notes/CreateNote";
 import ReactPlayer from "react-player";
 import { useApolloClient } from "@apollo/react-hooks";
 
@@ -33,18 +32,16 @@ class Video extends Component {
 
   render() {
     return (
-      <div>
-        <div className="video-box">
-          <ReactPlayer
-            ref="this.player"
-            url={
-              "https://youtube.com/embed/" +
-              this.props.video.snippet.resourceId.videoId
-            }
-            controls="true"
-          />
-        </div>
-        <CreateNote user={this.props.user} video={this.props.video} />
+      <div className="video-box">
+        <ReactPlayer
+          ref="this.player"
+          url={
+            "https://youtube.com/embed/" +
+            this.props.video.snippet.resourceId.videoId
+          }
+          controls={true}
+          className="video-player"
+        />
       </div>
     );
   }
