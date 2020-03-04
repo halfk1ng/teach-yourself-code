@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import Router, { useRouter } from "next/router";
 import { useFetchUser } from "../lib/user";
-import Video from "../components/Tutorial/Video";
+import Video from "../components/Video/Video";
 import Description from "../components/Tutorial/Description";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";

@@ -34,7 +34,7 @@ function Subscriptions(user) {
           </h3>
         </div>
       ) : (
-        <ul>
+        <ul className="subscriptions-list">
           {data.user_playlists.map(up => (
             <li key={up.playlist.id}>
               <TutorialCard tutorial={up} />

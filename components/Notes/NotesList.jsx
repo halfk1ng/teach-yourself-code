@@ -44,40 +44,20 @@ export default function NotesList({ user, selection }) {
 
   return (
     <div>
-      {!noteToggled ? (
-        <button
-          className="add-note-btn button"
-          onClick={() => toggleNoteInput(true)}
-        >
-          add a note
-        </button>
-      ) : (
-        <button
-          className="add-note-btn button"
-          onClick={() =>
-            addNote({
-              variables: {
-                note: note,
-                user_id: user.sub,
-                video_id: selection.snippet.resourceId.videoId
-              }
-            }).then(() => {
-              toggleNoteInput(false);
-              refetch();
-            })
-          }
-        >
-          save note
-        </button>
-      )}
-      <ul className="notes-list">
-        {data.notes.map(note => (
-          <li key={note.id}>{note.note}</li>
-        ))}
-      </ul>
-      {noteToggled ? (
-        <input type="textarea" onChange={e => setNote(e.target.value)} />
-      ) : null}
+      <div className="notes-title has-text-left">
+        <h3>
+          <b>Your Notes</b>
+        </h3>
+      </div>
+      <div className="notes-container ">
+        <ul className="notes-list has-text-left">
+          {data.notes.map(note => (
+            <li key={note.id} className="note">
+              {note.note}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

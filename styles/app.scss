@@ -1,4 +1,6 @@
+// import Bulma core files
 @import "../node_modules/bulma/bulma.sass";
+// import SCSS partials
 @import "../styles/_home.scss";
 @import "../styles/_profile.scss";
 @import "../styles/_preview.scss";
@@ -10,19 +12,16 @@
 @import "../styles/components/_loader.scss";
 @import "../styles/components/_sidebar.scss";
 @import "../styles/components/view.scss";
-@import "../styles/components/video";
+@import "../styles/components/video.scss";
+@import "../styles/components/note_list";
+// import styles for Video-React component
+@import "~video-react/styles/scss/video-react";
 
 .main-view {
   background-color: $bright-blue;
   height: 100vh;
   width: 100%;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-ul {
-  display: flex;
   justify-content: center;
   align-items: center;
 }

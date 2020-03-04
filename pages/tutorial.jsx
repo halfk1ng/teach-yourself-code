@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Router from "next/router";
 import Layout from "../components/Layout";
-import Video from "../components/Tutorial/Video";
-import VideoCard from "../components/Tutorial/VideoCard";
+import Video from "../components/Video/Video";
+import VideoCard from "../components/Video/VideoCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
-import NotesList from "../components/Tutorial/NotesList";
+import NotesList from "../components/Notes/NotesList";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -81,14 +81,13 @@ function Tutorial({ videos, user }) {
           </h3>
         </div>
         <div className="columns top-preview-row">
-          <div className="column video-column is-9">
-            <Video video={selection} className="preview-video" />
+          <div className="column video-column is-7">
+            <Video video={selection} user={user} className="preview-video" />
             <button onClick={() => setVideo(previousVideo)}>Previous</button>
             <button onClick={() => setVideo(nextVideo)}>Next</button>
           </div>
-          <div className="column description-column is-3">
+          <div className="column description-column is-5">
             <div className="is-flex" style={{ flexDirection: "column" }}>
-              <h3>Your Notes</h3>
               <NotesList user={user} selection={selection} />
             </div>
           </div>
