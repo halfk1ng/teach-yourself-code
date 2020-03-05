@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Sidebar({ user, loading }) {
+  const router = useRouter();
+
   return (
     <div className="sidebar is-flex">
       <div
@@ -32,54 +35,79 @@ function Sidebar({ user, loading }) {
           </h3>
         </Link>
       </div>
-      <div className="nav-item">
+      <div className={router.route == "/" ? "nav-item-current" : "nav-item"}>
         <Link href="/">
           <FontAwesomeIcon icon="home" className="nav-icon" />
         </Link>
         <Link href="/">
           <a
-            className="nav-text has-text-white is-size-6"
+            className={
+              router.route == "/"
+                ? "nav-text-current is-size-6"
+                : "nav-text is-size-6"
+            }
             style={{ margin: ".5em 0em" }}
           >
             Home
           </a>
         </Link>
       </div>
-      <div className="nav-item">
+      <div
+        className={router.route == "/about" ? "nav-item-current" : "nav-item"}
+      >
         <Link href="/about">
           <FontAwesomeIcon icon="info-circle" className="nav-icon" />
         </Link>
 
         <Link href="/about">
           <a
-            className="nav-text has-text-white is-size-6"
+            className={
+              router.route == "/about"
+                ? "nav-text-current is-size-6"
+                : "nav-text is-size-6"
+            }
             style={{ margin: ".5em 0em" }}
           >
             About
           </a>
         </Link>
       </div>
-      <div className="nav-item">
+      <div
+        className={router.route == "/topics" ? "nav-item-current" : "nav-item"}
+      >
         <Link href="/topics">
           <FontAwesomeIcon icon={["fab", "youtube"]} className="nav-icon" />
         </Link>
         <Link href="/topics">
           <a
-            className="nav-text has-text-white is-size-6"
+            className={
+              router.route == "/topics"
+                ? "nav-text-current is-size-6"
+                : "nav-text is-size-6"
+            }
             style={{ margin: ".5em 0em" }}
           >
             Topics
           </a>
         </Link>
       </div>
+
       {user ? (
-        <div className="nav-item">
+        <div
+          className={
+            router.route == "/subscriptions" ? "nav-item-current" : "nav-item"
+          }
+        >
           <Link href="/subscriptions">
             <FontAwesomeIcon icon="bookmark" className="nav-icon" />
           </Link>
           <Link href="/subscriptions">
             <a
-              className="nav-text has-text-white is-size-6"
+              className={
+                router.route == "/subscriptions"
+                  ? "nav-text-current is-size-6"
+                  : "nav-text is-size-6"
+              }
               style={{ margin: ".5em 0em" }}
             >
               Your Courses
@@ -91,13 +119,21 @@ function Sidebar({ user, loading }) {
       {!loading &&
         (user ? (
           <>
-            <div className="nav-item">
+            <div
+              className={
+                router.route == "/profile" ? "nav-item-current" : "nav-item"
+              }
+            >
               <Link href="/profile">
                 <FontAwesomeIcon icon="user" className="nav-icon" />
               </Link>
               <Link href="/profile">
                 <a
-                  className="nav-text has-text-white is-size-6"
+                  className={
+                    router.route == "/profile"
+                      ? "nav-text-current is-size-6"
+                      : "nav-text is-size-6"
+                  }
                   style={{ margin: ".5em 0em" }}
                 >
                   Profile

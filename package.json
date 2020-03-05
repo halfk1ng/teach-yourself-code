@@ -27,6 +27,7 @@
     "bulma": "^0.8.0",
     "cross-fetch": "^3.0.4",
     "dotenv": "^8.2.0",
+    "framer-motion": "^1.9.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",

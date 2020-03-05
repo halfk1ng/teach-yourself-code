@@ -1,9 +1,9 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
 import TutorialCard from "../components/Tutorial/TutorialCard";
-import { useFetchUser } from "../lib/user";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import { motion } from "framer-motion";
 
 const FETCH_USER_PLAYLISTS = gql`
   query GetUserPlaylists {

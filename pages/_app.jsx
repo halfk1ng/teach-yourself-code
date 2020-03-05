@@ -5,6 +5,7 @@ import ApolloClient from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { useFetchUser } from "../lib/user";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { config, library } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
@@ -52,12 +53,14 @@ const createApolloClient = () => {
 
 const client = createApolloClient();
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, router }) {
   const { user } = useFetchUser();
 
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} user={user} />
+      <AnimatePresence>
+        <Component {...pageProps} user={user} />
+      </AnimatePresence>
     </ApolloProvider>
   );
 }
