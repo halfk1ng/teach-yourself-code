@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import Router from "next/router";
 import Layout from "../components/Layout";
 import Video from "../components/Video/Video";
 import VideoCard from "../components/Video/VideoCard";
-import CreateNote from "../components/Notes/CreateNote";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
-import NotesList from "../components/Notes/NotesList";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -81,37 +78,29 @@ function Tutorial({ videos, user }) {
             <b>{selection.snippet.title}</b>
           </h3>
         </div>
-        <div className="columns top-preview-row">
-          <div className="column video-column is-7">
-            <Video video={selection} user={user} className="tutorial-video" />
-            <button
-              onClick={() => setVideo(previousVideo)}
-              className="previous-video-btn"
-            >
-              <FontAwesomeIcon
-                icon="arrow-alt-circle-left"
-                className="video-nav-icon"
-              />
-            </button>
-            <button
-              onClick={() => setVideo(nextVideo)}
-              className="next-video-btn"
-            >
-              <FontAwesomeIcon
-                icon="arrow-alt-circle-right"
-                className="video-nav-icon"
-              />
-            </button>
-          </div>
-          <div className="column description-column is-5">
-            <div className="is-flex" style={{ flexDirection: "column" }}>
-              <NotesList user={user} selection={selection} />
-            </div>
-          </div>
+        <div style={{ margin: "1em 0em" }}>
+          <Video video={selection} user={user} className="tutorial-video" />
+          <button
+            onClick={() => setVideo(previousVideo)}
+            className="previous-video-btn is-pulled-left"
+          >
+            <FontAwesomeIcon
+              icon="arrow-alt-circle-left"
+              className="video-nav-icon"
+            />
+          </button>
+          <button
+            onClick={() => setVideo(nextVideo)}
+            className="next-video-btn is-pulled-right"
+          >
+            <FontAwesomeIcon
+              icon="arrow-alt-circle-right"
+              className="video-nav-icon"
+            />
+          </button>
         </div>
-        <CreateNote user={user} video={selection} />
 
-        <button
+        {/* <button
           className="button add-course-btn"
           onClick={() =>
             deletePlaylist({
@@ -122,7 +111,7 @@ function Tutorial({ videos, user }) {
           }
         >
           Remove Course
-        </button>
+        </button> */}
         <br />
         <br />
         <div

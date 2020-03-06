@@ -1,50 +1,142 @@
-import React, { Component } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ReactPlayer from "react-player";
-import { useApolloClient } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/react-hooks";
+import NotesList from "../Notes/NotesList";
 
-class Video extends Component {
-  constructor(props) {
-    super(props);
-
-    this.player = React.createRef();
+const ADD_NOTE = gql`
+  mutation MyMutation(
+    $note: String
+    $timestamp: Int
+    $user_id: String
+    $video_id: String
+  ) {
+    insert_notes(
+      objects: {
+        note: $note
+        timestamp: $timestamp
+        user_id: $user_id
+        video_id: $video_id
+      }
+    ) {
+      returning {
+        id
+        note
+        timestamp
+        video_id
+        user_id
+      }
+    }
   }
+`;
 
-  // handleProgress = playedSeconds => {
-  //   console.log(Math.round(playedSeconds.playedSeconds));
-  //   let ms = Math.round(playedSeconds.playedSeconds * 1000);
-  //   this.progressToTimestamp(ms);
-  // };
+function Video({ video, user }) {
+  const ref = useRef(null);
 
-  // progressToTimestamp = ms => {
-  //   let milliseconds = parseInt((ms % 1000) / 100),
-  //     seconds = Math.floor((ms / 1000) % 60),
-  //     minutes = Math.floor((ms / (1000 * 60)) % 60),
-  //     hours = Math.floor((ms / (1000 * 60 * 60)) % 24);
+  const [currentNote, setNote] = useState("");
+  const [timestamp, setTimestamp] = useState(null);
 
-  //   hours = hours < 10 ? "0" + hours : hours;
-  //   minutes = minutes < 10 ? "0" + minutes : minutes;
-  //   seconds = seconds < 10 ? "0" + seconds : seconds;
-
-  //   let time = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
-  //   console.log(time);
-  //   return time;
-  // };
-
-  render() {
-    return (
-      <div className="video-box">
-        <ReactPlayer
-          ref="this.player"
-          url={
-            "https://youtube.com/embed/" +
-            this.props.video.snippet.resourceId.videoId
+  const [addNote] = useMutation(ADD_NOTE, {
+    refetchQueries: [
+      {
+        query: gql`
+          query fetchNotes($user_id: String, $video_id: String) {
+            notes(
+              where: {
+                user_id: { _eq: $user_id }
+                video_id: { _eq: $video_id }
+              }
+            ) {
+              id
+              note
+              timestamp
+            }
           }
-          controls={true}
-          className="video-player"
-        />
-      </div>
-    );
+        `,
+        variables: {
+          user_id: user.sub,
+          video_id: video.snippet.resourceId.videoId
+        }
+      }
+    ]
+  });
+
+  useEffect(() => {
+    setTimestamp(Math.round(ref.current.getCurrentTime()));
+  });
+
+  const handleGetCurrentTime = () => {
+    setTimestamp(Math.round(ref.current.getCurrentTime()));
+    handleAddNote();
+  };
+
+  function handleAddNote() {
+    addNote({
+      variables: {
+        note: currentNote,
+        timestamp: timestamp,
+        user_id: user.sub,
+        video_id: video.snippet.resourceId.videoId
+      }
+    });
+    setNote("");
   }
+
+  const handleSeekTo = value => {
+    ref.current.seekTo(value);
+  };
+
+  return (
+    <div
+      className="columns"
+      style={{ background: "lightgray", padding: "1em" }}
+    >
+      <div className="column is-7">
+        <div className="player-wrapper">
+          <ReactPlayer
+            ref={ref}
+            url={
+              "https://youtube.com/embed/" + video.snippet.resourceId.videoId
+            }
+            controls={true}
+            muted={true}
+            playing={true}
+            className="react-player"
+            width="100%"
+            height="100%"
+          />
+        </div>
+        <div>
+          <div className="columns">
+            <div className="column">
+              <input
+                type="textarea"
+                placeholder="Type something..."
+                value={currentNote}
+                onChange={e => setNote(e.target.value)}
+                className="note-input"
+              />
+            </div>
+            <div className="column is-3 has-text-right">
+              <button
+                className="save-note-btn button"
+                onClick={handleGetCurrentTime}
+                style={{ margin: "1em 0em" }}
+              >
+                save note
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column is-5"
+        style={{ maxHeight: "400px", overflow: "scroll" }}
+      >
+        <NotesList user={user} selection={video} seek={handleSeekTo} />
+      </div>
+    </div>
+  );
 }
 
 export default Video;

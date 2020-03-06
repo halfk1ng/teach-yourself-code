@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Sidebar from "../Menus/Sidebar";
 import View from "../View/index";
 import "../../styles/app.scss";
-import { motion, AnimatePresence } from "framer-motion";
 
 // Global styles and component-specific styles.
 
@@ -24,16 +23,7 @@ function Layout({ user, loading = false, children }) {
           <Sidebar user={user} loading={loading} className="is-flex" />
         </div>
         <div className="column is-10" style={{ padding: "1.75em" }}>
-          <motion.div
-            transition={{ ease: "linear", duration: 0.4 }}
-            key={router.pathname}
-            initial={{ y: 300, opacity: 1 }}
-            animate={config}
-            exit={{ y: -200, opacity: 1 }}
-            id="page-transition-container"
-          >
-            <View>{children}</View>
-          </motion.div>
+          <View>{children}</View>
         </div>
       </div>
     </div>
