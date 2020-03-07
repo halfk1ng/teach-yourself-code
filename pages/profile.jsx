@@ -1,17 +1,5 @@
 import Layout from "../components/Layout";
-import gql from "graphql-tag";
 import { useFetchUser } from "../lib/user";
-
-// const query = gql`
-//   query {
-//     user {
-//       id
-//       first_name
-//       last_name
-//       email
-//     }
-//   }
-// `;
 
 const Profile = () => {
   const { user, loading } = useFetchUser({ required: true });

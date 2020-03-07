@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
+import { useFetchUser } from "../lib/user";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -27,13 +28,14 @@ const DELETE_PLAYLIST = gql`
   }
 `;
 
-function Tutorial({ videos, user }) {
+function Tutorial({ videos }) {
   // local state
   const [selection, setVideo] = useState(videos[0]);
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const router = useRouter();
+  const { user, loading, error } = useFetchUser();
 
   // methods for accessing GraphQL queries/mutations
 
@@ -71,36 +73,39 @@ function Tutorial({ videos, user }) {
 
   return (
     <Layout user={user}>
-      <div className="tutorial-container">
-        <div>
-          {/* TODO: This needs to the playlisy title */}
-          <h3 className="is-size-4">
-            <b>{selection.snippet.title}</b>
-          </h3>
-        </div>
-        <div style={{ margin: "1em 0em" }}>
-          <Video video={selection} user={user} className="tutorial-video" />
-          <button
-            onClick={() => setVideo(previousVideo)}
-            className="previous-video-btn is-pulled-left"
-          >
-            <FontAwesomeIcon
-              icon="arrow-alt-circle-left"
-              className="video-nav-icon"
-            />
-          </button>
-          <button
-            onClick={() => setVideo(nextVideo)}
-            className="next-video-btn is-pulled-right"
-          >
-            <FontAwesomeIcon
-              icon="arrow-alt-circle-right"
-              className="video-nav-icon"
-            />
-          </button>
-        </div>
+      {loading ? (
+        "Content is loading..."
+      ) : (
+        <div className="tutorial-container">
+          <div>
+            {/* TODO: This needs to the playlisy title */}
+            <h3 className="is-size-4">
+              <b>{selection.snippet.title}</b>
+            </h3>
+          </div>
+          <div style={{ margin: "1em 0em" }}>
+            <Video video={selection} user={user} className="tutorial-video" />
+            <button
+              onClick={() => setVideo(previousVideo)}
+              className="previous-video-btn is-pulled-left"
+            >
+              <FontAwesomeIcon
+                icon="arrow-alt-circle-left"
+                className="video-nav-icon"
+              />
+            </button>
+            <button
+              onClick={() => setVideo(nextVideo)}
+              className="next-video-btn is-pulled-right"
+            >
+              <FontAwesomeIcon
+                icon="arrow-alt-circle-right"
+                className="video-nav-icon"
+              />
+            </button>
+          </div>
 
-        {/* <button
+          {/* <button
           className="button add-course-btn"
           onClick={() =>
             deletePlaylist({
@@ -112,32 +117,36 @@ function Tutorial({ videos, user }) {
         >
           Remove Course
         </button> */}
-        <br />
-        <br />
-        <div
-          className={isOpen ? "dropdown is-active" : "dropdown"}
-          style={{ width: "100%" }}
-        >
-          <div className="dropdown-trigger">
-            <button
-              className="button"
-              aria-haspopup="true"
-              aria-controls="dropdown-menu6"
-              onClick={toggleDropdown}
-            >
-              <span>{isOpen ? "Close Playlist" : "View Playlist"}</span>
-              <span className="icon is-small">
-                <FontAwesomeIcon icon="caret-down" className="dropdown-icon" />
-              </span>
-            </button>
-          </div>
-          <div className="dropdown-menu" id="dropdown-menu6" role="menu">
-            <div className="tutorial-playlist-container">
-              <ul className="tutorial-playlist">{videoList}</ul>
+          <br />
+          <br />
+          <div
+            className={isOpen ? "dropdown is-active" : "dropdown"}
+            style={{ width: "100%" }}
+          >
+            <div className="dropdown-trigger">
+              <button
+                className="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu6"
+                onClick={toggleDropdown}
+              >
+                <span>{isOpen ? "Close Playlist" : "View Playlist"}</span>
+                <span className="icon is-small">
+                  <FontAwesomeIcon
+                    icon="caret-down"
+                    className="dropdown-icon"
+                  />
+                </span>
+              </button>
+            </div>
+            <div className="dropdown-menu" id="dropdown-menu6" role="menu">
+              <div className="tutorial-playlist-container">
+                <ul className="tutorial-playlist">{videoList}</ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </Layout>
   );
 }
