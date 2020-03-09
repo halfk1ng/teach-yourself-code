@@ -3,13 +3,19 @@
 .sidebar {
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100%;
 }
 
+.logo {
+  max-height: 96px;
+  width: auto;
+}
+
 .brand-name {
-  position: relative;
-  transform: translate(75px, 0px);
   cursor: pointer;
+  align-items: center;
+  margin-bottom: 1em;
 }
 
 .nav-icon {
@@ -47,10 +53,12 @@
 
 .nav-text {
   color: $whitman-white;
+  font-family: "Lobster", cursive;
 }
 
 .nav-text-current {
   color: $dark-knight;
+  font-family: "Lobster", cursive;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -14,7 +14,7 @@ function Index() {
           className="column is-6 is-flex"
           style={{ flexDirection: "column", justifyContent: "center" }}
         >
-          <h3 className="is-size-2" style={{ color: "#1a1b25" }}>
+          <h3 className="home-main-text is-size-2" style={{ color: "#1a1b25" }}>
             Learn to code for free with our online platform!
           </h3>
           <a className="signup-btn" href="/api/login">

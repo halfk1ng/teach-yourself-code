@@ -7,32 +7,9 @@ function Sidebar({ user, loading }) {
 
   return (
     <div className="sidebar is-flex">
-      <div
-        className="brand-name is-flex"
-        style={{
-          alignItems: "center",
-          marginBottom: "3em",
-          marginLeft: ".25em"
-        }}
-      >
-        <div
-          className="logo-bg is-flex"
-          style={{
-            backgroundColor: "#d81e5b",
-            height: "36px",
-            width: "36px",
-            borderRadius: "7px",
-            justifyContent: "center",
-            alignItems: "center",
-            marginRight: "0.75em"
-          }}
-        >
-          <h3 className="has-text-white is-size-6">T</h3>
-        </div>
+      <div className="brand-name">
         <Link href="/">
-          <h3 className="nav-text has-text-white is-size-6">
-            Teach Yourself Code
-          </h3>
+          <img src="/static/images/main-logo.png" alt="logo" className="logo" />
         </Link>
       </div>
       <div className={router.route == "/" ? "nav-item-current" : "nav-item"}>
