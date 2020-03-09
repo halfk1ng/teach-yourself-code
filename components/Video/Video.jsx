@@ -108,28 +108,30 @@ function Video({ video, user }) {
             height="100%"
           />
         </div>
-        <div>
-          <div className="columns">
-            <div className="column">
-              <input
-                type="textarea"
-                placeholder="Type something..."
-                value={currentNote}
-                onChange={e => setNote(e.target.value)}
-                className="note-input"
-              />
-            </div>
-            <div className="column is-3 has-text-right">
-              <button
-                className="save-note-btn button"
-                onClick={handleGetCurrentTime}
-                style={{ margin: "1em 0em" }}
-              >
-                save note
-              </button>
+        {router.route == "/tutorial" ? (
+          <div>
+            <div className="columns">
+              <div className="column">
+                <input
+                  type="textarea"
+                  placeholder="Type something..."
+                  value={currentNote}
+                  onChange={e => setNote(e.target.value)}
+                  className="note-input"
+                />
+              </div>
+              <div className="column is-3 has-text-right">
+                <button
+                  className="save-note-btn button"
+                  onClick={handleGetCurrentTime}
+                  style={{ margin: "1em 0em" }}
+                >
+                  save note
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
       </div>
       {router.route == "/tutorial" ? (
         <div

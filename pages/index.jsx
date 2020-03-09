@@ -1,7 +1,6 @@
 import Layout from "../components/Layout/index";
 import Link from "next/link";
 import { useFetchUser } from "../lib/user";
-import UseAnimations from "react-useanimations";
 
 function Index() {
   const { user, loading } = useFetchUser();
@@ -25,7 +24,7 @@ function Index() {
           </p> */}
         </div>
         <div className="column is-flex" style={{ justifyContent: "center" }}>
-          <img src="/static/images/girl_coding.svg" alt="" />
+          <img src="/static/images/man-coding.svg" alt="" />
         </div>
       </div>
     </Layout>

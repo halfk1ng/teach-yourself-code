@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Router, { useRouter } from "next/router";
 import Video from "../components/Video/Video";
@@ -48,13 +49,13 @@ const ADD_USER_PLAYLIST = gql`
 
 function Preview({ video, videos }) {
   const { user, loading: loadingUser } = useFetchUser();
+  const [selection, setVideo] = useState(videos[0]);
+
   const router = useRouter();
 
   const { loading, error, data } = useQuery(FETCH_USER, {
     variables: { email: user.name }
   });
-
-  console.log(videos);
 
   const [addPlaylist] = useMutation(ADD_USER_PLAYLIST, {
     refetchQueries: [
@@ -112,7 +113,12 @@ function Preview({ video, videos }) {
           </div>
           <div className="columns top-preview-row">
             <div className="column video-column is-7">
-              <Video video={video} user={user} className="preview-video" />
+              <Video
+                video={video}
+                user={user}
+                setVideo={setVideo}
+                className="preview-video"
+              />
             </div>
             <div className="column description-column is-5">
               <Description video={video} />

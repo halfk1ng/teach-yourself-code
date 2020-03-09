@@ -11,7 +11,7 @@ function TutorialCard({ tutorial }) {
         </div>
         <div className="card-content">
           <div className="content">
-            <h2 className="is-size-5">{tutorial.playlist.title}</h2>
+            <h2 className="is-size-6">{tutorial.playlist.title}</h2>
             <p>by {tutorial.playlist.channel}</p>
           </div>
         </div>

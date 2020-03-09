@@ -50,7 +50,7 @@ export default function NotesList({ user, selection, seek }) {
             <li key={note.id} className="note">
               <a onClick={() => seek(note.timestamp)}>
                 {formatTimestamp(note.timestamp)}
-              </a>{" "}
+              </a>
               - {note.note}
             </li>
           ))}

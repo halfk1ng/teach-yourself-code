@@ -96,27 +96,6 @@ function Sidebar({ user, loading }) {
       {!loading &&
         (user ? (
           <>
-            <div
-              className={
-                router.route == "/profile" ? "nav-item-current" : "nav-item"
-              }
-            >
-              <Link href="/profile">
-                <FontAwesomeIcon icon="user" className="nav-icon" />
-              </Link>
-              <Link href="/profile">
-                <a
-                  className={
-                    router.route == "/profile"
-                      ? "nav-text-current is-size-6"
-                      : "nav-text is-size-6"
-                  }
-                  style={{ margin: ".5em 0em" }}
-                >
-                  Profile
-                </a>
-              </Link>
-            </div>
             <div className="nav-item">
               <Link href="/api/logout">
                 <FontAwesomeIcon icon="sign-out-alt" className="nav-icon" />

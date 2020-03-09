@@ -15,7 +15,7 @@
 @import "../styles/components/video.scss";
 @import "../styles/components/note_list";
 //  Google fonts
-@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
 
 .main-view {
   background-color: $bright-blue;
@@ -24,4 +24,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+h3 {
+  font-family: "Fira Code", monospace;
+}
+
+h2 {
+  font-family: "Fira Code", monospace;
 }
