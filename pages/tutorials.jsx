@@ -1,5 +1,5 @@
 import Layout from "../components/Layout/index";
-// import Loading from "../components/Loading";
+import Loader from "../components/Loader";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useQuery } from "@apollo/react-hooks";
@@ -33,7 +33,7 @@ function Tutorials(user) {
     <Layout user={user}>
       {loading ? (
         <div>
-          <h3 className="page-header is-size-5">Content is loading!</h3>
+          <Loader />
         </div>
       ) : (
         <ul className="playlists-list">

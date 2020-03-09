@@ -7,12 +7,6 @@ import "../../styles/app.scss";
 // Global styles and component-specific styles.
 
 function Layout({ user, loading = false, children }) {
-  const config = {
-    type: "spring",
-    y: 0,
-    opacity: 1
-  };
-  const router = useRouter();
   return (
     <div className="main-view is-flex">
       <div className="columns is-2" style={{ width: "100%" }}>

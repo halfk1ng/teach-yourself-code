@@ -1,10 +1,11 @@
 import Layout from "../components/Layout";
 import Router, { useRouter } from "next/router";
-import { useFetchUser } from "../lib/user";
 import Video from "../components/Video/Video";
 import Description from "../components/Tutorial/Description";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useFetchUser } from "../lib/user";
+
 import Linkify from "react-linkify";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
@@ -46,7 +47,7 @@ const ADD_USER_PLAYLIST = gql`
 `;
 
 function Preview({ video, videos }) {
-  const { user } = useFetchUser();
+  const { user, loading: loadingUser } = useFetchUser();
   const router = useRouter();
 
   const { loading, error, data } = useQuery(FETCH_USER, {
@@ -96,6 +97,7 @@ function Preview({ video, videos }) {
 
   return (
     <Layout user={user}>
+      {loadingUser ? "Loading user information" : ""}
       {loading ? (
         <h3 className="page-header is-size-5">
           <b>Preview is loading!</b>
@@ -110,7 +112,7 @@ function Preview({ video, videos }) {
           </div>
           <div className="columns top-preview-row">
             <div className="column video-column is-7">
-              <Video video={video} className="preview-video" />
+              <Video video={video} user={user} className="preview-video" />
             </div>
             <div className="column description-column is-5">
               <Description video={video} />

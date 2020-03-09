@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import NotesList from "../Notes/NotesList";
@@ -32,6 +33,7 @@ const ADD_NOTE = gql`
 
 function Video({ video, user }) {
   const ref = useRef(null);
+  const router = useRouter();
 
   const [currentNote, setNote] = useState("");
   const [timestamp, setTimestamp] = useState(null);
@@ -91,7 +93,7 @@ function Video({ video, user }) {
       className="columns"
       style={{ background: "lightgray", padding: "1em" }}
     >
-      <div className="column is-7">
+      <div className="column">
         <div className="player-wrapper">
           <ReactPlayer
             ref={ref}
@@ -129,12 +131,14 @@ function Video({ video, user }) {
           </div>
         </div>
       </div>
-      <div
-        className="column is-5"
-        style={{ maxHeight: "400px", overflow: "scroll" }}
-      >
-        <NotesList user={user} selection={video} seek={handleSeekTo} />
-      </div>
+      {router.route == "/tutorial" ? (
+        <div
+          className="column is-5"
+          style={{ maxHeight: "400px", overflow: "scroll" }}
+        >
+          <NotesList user={user} selection={video} seek={handleSeekTo} />
+        </div>
+      ) : null}
     </div>
   );
 }

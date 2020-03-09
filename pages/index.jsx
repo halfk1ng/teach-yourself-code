@@ -1,8 +1,7 @@
 import Layout from "../components/Layout/index";
 import Link from "next/link";
 import { useFetchUser } from "../lib/user";
-import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import UseAnimations from "react-useanimations";
 
 function Index() {
   const { user, loading } = useFetchUser();
@@ -20,6 +19,7 @@ function Index() {
           <a className="signup-btn" href="/api/login">
             CREATE AN ACCOUNT
           </a>
+
           {/* <p>
             or learn more <Link href="/about">here</Link>
           </p> */}
