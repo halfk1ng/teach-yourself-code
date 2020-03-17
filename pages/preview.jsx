@@ -53,9 +53,11 @@ function Preview({ video, videos }) {
 
   const router = useRouter();
 
-  const { loading, error, data } = useQuery(FETCH_USER, {
-    variables: { email: user.name }
-  });
+  if (user) {
+    const { loading, error, data } = useQuery(FETCH_USER, {
+      variables: { email: user.name }
+    });
+  }
 
   const [addPlaylist] = useMutation(ADD_USER_PLAYLIST, {
     refetchQueries: [
@@ -99,7 +101,7 @@ function Preview({ video, videos }) {
   return (
     <Layout user={user}>
       {loadingUser ? "Loading user information" : ""}
-      {loading ? (
+      {user ? (
         <h3 className="page-header is-size-5">
           <b>Preview is loading!</b>
         </h3>
@@ -115,7 +117,6 @@ function Preview({ video, videos }) {
             <div className="column video-column is-7">
               <Video
                 video={video}
-                user={user}
                 setVideo={setVideo}
                 className="preview-video"
               />
@@ -124,23 +125,26 @@ function Preview({ video, videos }) {
               <Description video={video} />
             </div>
           </div>
-          <button
-            onClick={() =>
-              addPlaylist({
-                variables: {
-                  playlist_id: router.query.id,
-                  user_id: data.users[0].id
-                }
-              }).then(() =>
-                Router.push(
-                  `/tutorial?playlist=${router.query.playlist}&id=${router.query.id}`
+          {user ? (
+            <button
+              onClick={() =>
+                addPlaylist({
+                  variables: {
+                    playlist_id: router.query.id,
+                    user_id: data.users[0].id
+                  }
+                }).then(() =>
+                  Router.push(
+                    `/tutorial?playlist=${router.query.playlist}&id=${router.query.id}`
+                  )
                 )
-              )
-            }
-            className="button add-course-btn"
-          >
-            Add Course
-          </button>
+              }
+              className="button add-course-btn"
+            >
+              Add Course
+            </button>
+          ) : null}
+
           <br />
           <br />
           <div className="tutorial-playlist-container">

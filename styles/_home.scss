@@ -1,5 +1,10 @@
 @import "../styles//variables";
 
+.home-view {
+  height: 100%;
+  z-index: 2;
+}
+
 .signup-btn {
   background-color: $rueful-rose;
   color: $whitman-white;
@@ -20,4 +25,28 @@
 
 .home-main-text {
   font-family: "Fira Code", monospace;
+}
+
+.main-home-column {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.svg-column {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 400px) {
+  .signup-btn {
+    height: 35px;
+    margin: 1.25em 0em;
+  }
+
+  .home-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -1,0 +1,17 @@
+@import "../styles//variables";
+
+.bottom-bar-container {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background: $bright-blue;
+  z-index: 20;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.bottom-nav-link {
+  margin: 0em 0.5em;
+}

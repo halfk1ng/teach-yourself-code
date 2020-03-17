@@ -126,6 +126,7 @@ function Sidebar({ user, loading }) {
           </div>
         ))}
     </div>
+  
   );
 }
 
