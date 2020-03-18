@@ -24,3 +24,22 @@
   margin: 1em;
   font-family: "Fira Code", mono;
 }
+
+@media only screen and (max-width: 768px) {
+  .topic-view {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .topics-container {
+    margin-bottom: 5em;
+    width: 95vw;
+  }
+
+  .topic-graphic {
+    height: 96px;
+    margin: 0.25em;
+  }
+}

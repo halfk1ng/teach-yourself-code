@@ -23,14 +23,8 @@ function Layout({ user, loading = false, children }) {
         </div>
       </div>
       <div className="mobile-view is-hidden-desktop">
-        <View style={{ position: "relative" }}>
-          {children}
-          <BottomBar
-            user={user}
-            loading={loading}
-            className="is-hidden-tablet"
-          />
-        </View>
+        <View style={{ position: "relative" }}>{children}</View>
+        <BottomBar user={user} loading={loading} className="is-hidden-tablet" />
       </div>
     </div>
   );

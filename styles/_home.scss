@@ -37,7 +37,7 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 768px) {
   .signup-btn {
     height: 35px;
     margin: 1.25em 0em;
@@ -45,6 +45,7 @@
 
   .home-view {
     display: flex;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;

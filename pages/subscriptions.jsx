@@ -26,9 +26,12 @@ function Subscriptions() {
 
   return (
     <Layout user={user} className="is-flex">
-      <div className="is-flex" style={{ flexDirection: "column" }}>
+      <div
+        className="subscriptions-view is-flex"
+        style={{ flexDirection: "column" }}
+      >
         {user ? (
-          <h3 className="subscriptions-header is-size-3">
+          <h3 className="subscriptions-header is-size-3 is-size-5-touch">
             Hello, <b>{user.nickname} 👋</b>! Here are your tutorials.
           </h3>
         ) : (
