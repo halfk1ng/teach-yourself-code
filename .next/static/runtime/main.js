@@ -4797,7 +4797,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/jamestucker/Personal Projects/teach_yourself_code/.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/jamestucker/personal_projects/teach_yourself_code/.next");
       return error;
     }
   };
