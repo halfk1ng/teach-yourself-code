@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Video from "../components/Video/Video";
-import VideoCard from "../components/Video/VideoCard";
+import VideoList from "../components/Video/VideoList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import gql from "graphql-tag";
@@ -67,9 +67,6 @@ function Tutorial({ videos }) {
   const previousVideo = videos.find(
     (video, index) => index == videos.indexOf(selection) - 1
   );
-
-  // loop through videos to create the table of contents located under the main video
-  const videoList = videos.slice(1).map(v => <VideoCard key={v.id} v={v} />);
 
   return (
     <Layout user={user}>
@@ -141,7 +138,7 @@ function Tutorial({ videos }) {
             </div>
             <div className="dropdown-menu" id="dropdown-menu6" role="menu">
               <div className="tutorial-playlist-container">
-                <ul className="tutorial-playlist">{videoList}</ul>
+                <VideoList videos={videos} />
               </div>
             </div>
           </div>
