@@ -138,7 +138,8 @@ function Tutorial({ videos }) {
             </div>
             <div className="dropdown-menu" id="dropdown-menu6" role="menu">
               <div className="tutorial-playlist-container">
-                <VideoList videos={videos} />
+                {/* TODO: Create Context for accessing video-selection which will be selected in VideoList child component */}
+                <VideoList videos={videos} onClick={setVideo} />
               </div>
             </div>
           </div>

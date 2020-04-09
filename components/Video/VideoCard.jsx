@@ -1,6 +1,6 @@
 import Linkify from "react-linkify";
 
-function VideoCard({ v, setVideo }) {
+function VideoCard({ v }) {
   return (
     <li key={v.id} className="video-list-description-row">
       <div className="columns">
@@ -10,7 +10,6 @@ function VideoCard({ v, setVideo }) {
               src={v.snippet.thumbnails.high.url}
               alt="video thumbnail"
               className="video-thumbnail"
-              onClick={() => setVideo(v)}
             />
           </div>
         </div>
