@@ -3486,9 +3486,7 @@ exports["default"] = function () {
     }
   }
 
-  return (
-    /*#__PURE__*/
-    function (_react_1$Component) {
+  return (/*#__PURE__*/function (_react_1$Component) {
       _inherits(_class, _react_1$Component);
 
       _createClass(_class, null, [{
@@ -3587,9 +3585,7 @@ var statusCodes = {
 * `Error` component used for handling errors.
 */
 
-var Error =
-/*#__PURE__*/
-function (_react$default$Compon) {
+var Error = /*#__PURE__*/function (_react$default$Compon) {
   _inherits(Error, _react$default$Compon);
 
   function Error() {
@@ -3676,23 +3672,23 @@ var styles = {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_5f137288facb1107b491 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_0fb095e325d7ebf261c3 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_5f137288facb1107b491 */ "dll-reference dll_5f137288facb1107b491"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_0fb095e325d7ebf261c3 */ "dll-reference dll_0fb095e325d7ebf261c3"))("./node_modules/react/index.js");
 
 /***/ }),
 
-/***/ "dll-reference dll_5f137288facb1107b491":
+/***/ "dll-reference dll_0fb095e325d7ebf261c3":
 /*!*******************************************!*\
-  !*** external "dll_5f137288facb1107b491" ***!
+  !*** external "dll_0fb095e325d7ebf261c3" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_5f137288facb1107b491;
+module.exports = dll_0fb095e325d7ebf261c3;
 
 /***/ })
 

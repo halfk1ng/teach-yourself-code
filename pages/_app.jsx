@@ -1,4 +1,7 @@
 import React from "react";
+// imports for Redux Toolkit
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 import "cross-fetch/polyfill";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-client";
@@ -59,7 +62,9 @@ export default function MyApp({ Component, pageProps, router }) {
 
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} user={user} />
+      <Provider store={store}>
+        <Component {...pageProps} user={user} />
+      </Provider>
     </ApolloProvider>
   );
 }
