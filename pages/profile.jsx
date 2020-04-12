@@ -21,7 +21,7 @@ const Profile = () => {
   return (
     <Layout user={user} loading={loading}>
       <h1>{currentUser}</h1>
-      {user ? <div>Hello, {user.nickname}</div> : "Error retreiving user!"}
+      {user ? <div>Hello, {user.nickname}</div> : "Error retrieving user!"}
     </Layout>
   );
 };
