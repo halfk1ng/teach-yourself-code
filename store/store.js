@@ -1,19 +1,40 @@
-import { configureStore, createReducer } from "@reduxjs/toolkit";
+import { configureStore, createReducer, createSlice } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
 
-const initialState = {
-  currentUser: "James",
-  currentVideo: undefined
-};
-
-const reducer = createReducer(initialState, {
-  UPDATE_CURRENT_USER: (state, action) => ({ currentUser: action.user }),
-  UPDATE_CURRENT_VIDEO: (state, action) => ({ currentVideo: action.video })
+const user = createSlice({
+  name: "user",
+  initialState: {
+    currentUser: "James"
+  },
+  reducers: {
+    updateCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
+    }
+  }
 });
 
-const initializeStore = (preloadedState = initialState) => {
+const videos = createSlice({
+  name: "videos",
+  initialState: {
+    currentVideo: undefined
+  },
+  reducers: {
+    updateCurrentVideo: (state, action) => {
+      state.currentVideo = action.payload;
+    }
+  }
+});
+
+export const { updateCurrentVideo } = videos.actions;
+
+const reducer = combineReducers({
+  user: user.reducer,
+  videos: videos.reducer
+});
+
+const initializeStore = () => {
   return configureStore({
-    reducer,
-    preloadedState
+    reducer
   });
 };
 export const store = initializeStore();
