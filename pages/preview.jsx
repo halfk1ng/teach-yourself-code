@@ -46,13 +46,13 @@ const ADD_USER_PLAYLIST = gql`
 `;
 
 function Preview({ video, videos }) {
-  const { user, loading: loadingUser } = useFetchUser();
+  const { user, loading } = useFetchUser();
   const [selection, setVideo] = useState(videos[0]);
 
   const router = useRouter();
 
   if (user) {
-    const { loading, error, data } = useQuery(FETCH_USER, {
+    const { error, data } = useQuery(FETCH_USER, {
       variables: { email: user.name }
     });
   }
@@ -98,8 +98,7 @@ function Preview({ video, videos }) {
 
   return (
     <Layout user={user}>
-      {loadingUser ? "Loading user information" : ""}
-      {user ? (
+      {loading ? (
         <h3 className="page-header is-size-5">
           <b>Preview is loading!</b>
         </h3>
@@ -115,6 +114,7 @@ function Preview({ video, videos }) {
             <div className="column video-column is-7">
               <Video
                 video={video}
+                user={user}
                 setVideo={setVideo}
                 className="preview-video"
               />
