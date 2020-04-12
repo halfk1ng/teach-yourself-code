@@ -4,9 +4,7 @@ import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import NotesList from "../Notes/NotesList";
-// import { createAction } from "@reduxjs/toolkit";
-import { useSelector, useDispatch } from "react-redux";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ADD_NOTE = gql`
   mutation MyMutation(
@@ -34,23 +32,14 @@ const ADD_NOTE = gql`
   }
 `;
 
-const useCurrentVideo = () => {
-  const currentVideo = useSelector(state => state.currentVideo);
-  const dispatch = useDispatch();
-  // const increment = () => dispatch(createAction('INCREMENT')())
-  // const decrement = () => dispatch(createAction('DECREMENT')())
-  // const reset = () => dispatch(createAction('RESET')())
-
-  return { currentVideo };
-};
-
 function Video({ video, user }) {
   const ref = useRef(null);
   const router = useRouter();
 
   const [currentNote, setNote] = useState("");
   const [timestamp, setTimestamp] = useState(null);
-  const { currentVideo } = useCurrentVideo();
+
+  const currentVideo = useSelector(state => state.videos.currentVideo);
   const videoToShow = currentVideo != undefined ? currentVideo : video;
 
   const [addNote] = useMutation(ADD_NOTE, {
@@ -79,7 +68,6 @@ function Video({ video, user }) {
   });
 
   useEffect(() => {
-    console.log(videoToShow);
     setTimestamp(Math.round(ref.current.getCurrentTime()));
   });
 
@@ -162,4 +150,4 @@ function Video({ video, user }) {
   );
 }
 
-export default connect(state => state)(Video);
+export default Video;
