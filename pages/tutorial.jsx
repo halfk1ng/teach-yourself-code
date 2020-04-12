@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import Video from "../components/Video/Video";
 import VideoList from "../components/Video/VideoList";
@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import { useFetchUser } from "../lib/user";
+import { useSelector, useDispatch } from "react-redux";
+import { updateCurrentVideo } from "../store/store";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -15,7 +17,7 @@ Tutorial.getInitialProps = async ctx => {
     `https://www.googleapis.com/youtube/v3/playlistItems?part=id%2C%20snippet&maxResults=50&playlistId=${ctx.query.playlist}&key=${apiKey}`
   );
   const json = await res.json();
-  return { videos: json.items };
+  return { videoList: json.items };
 };
 
 const DELETE_PLAYLIST = gql`
@@ -28,17 +30,33 @@ const DELETE_PLAYLIST = gql`
   }
 `;
 
-function Tutorial({ videos }) {
-  // local state
-  const [selection, setVideo] = useState(videos[0]);
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
+function Tutorial({ videoList }) {
   const router = useRouter();
   const { user, loading, error } = useFetchUser();
 
-  // methods for accessing GraphQL queries/mutations
+  // local state
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
+  // functions for accessing/setting current video via Redux
+  const dispatch = useDispatch();
+  const currentVideo = useSelector(state => state.videos.currentVideo);
+  const videoToShow = currentVideo != undefined ? currentVideo : videoList[0];
+
+  // methods used for the 'next' and 'previous' video buttons
+  let nextVideo = videoList.find(
+    (video, index) => index == videoList.indexOf(videoToShow) + 1
+  );
+
+  let previousVideo = videoList.find(
+    (video, index) => index == videoList.indexOf(videoToShow) - 1
+  );
+
+  useEffect(() => {
+    console.log(nextVideo);
+  });
+
+  // methods for accessing GraphQL queries/mutations
   const [deletePlaylist] = useMutation(DELETE_PLAYLIST, {
     refetchQueries: [
       {
@@ -60,14 +78,6 @@ function Tutorial({ videos }) {
     ]
   });
 
-  // methods used for the 'next' and 'previous' video buttons
-  const nextVideo = videos.find(
-    (video, index) => index == videos.indexOf(selection) + 1
-  );
-  const previousVideo = videos.find(
-    (video, index) => index == videos.indexOf(selection) - 1
-  );
-
   return (
     <Layout user={user}>
       {loading ? (
@@ -77,13 +87,13 @@ function Tutorial({ videos }) {
           <div>
             {/* TODO: This needs to the playlisy title */}
             <h3 className="is-size-4">
-              <b>{selection.snippet.title}</b>
+              <b>{videoToShow.snippet.title}</b>
             </h3>
           </div>
           <div style={{ margin: "1em 0em" }}>
-            <Video video={selection} user={user} className="tutorial-video" />
+            <Video video={videoToShow} user={user} className="tutorial-video" />
             <button
-              onClick={() => setVideo(previousVideo)}
+              onClick={() => dispatch(updateCurrentVideo(previousVideo))}
               className="previous-video-btn is-pulled-left"
             >
               <FontAwesomeIcon
@@ -92,7 +102,7 @@ function Tutorial({ videos }) {
               />
             </button>
             <button
-              onClick={() => setVideo(nextVideo)}
+              onClick={() => dispatch(updateCurrentVideo(nextVideo))}
               className="next-video-btn is-pulled-right"
             >
               <FontAwesomeIcon
@@ -138,8 +148,7 @@ function Tutorial({ videos }) {
             </div>
             <div className="dropdown-menu" id="dropdown-menu6" role="menu">
               <div className="tutorial-playlist-container">
-                {/* TODO: Create Context for accessing video-selection which will be selected in VideoList child component */}
-                <VideoList videos={videos} onClick={setVideo} />
+                <VideoList videos={videoList} />
               </div>
             </div>
           </div>

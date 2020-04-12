@@ -1,8 +1,16 @@
 import Linkify from "react-linkify";
+import { useDispatch } from "react-redux";
+import { updateCurrentVideo } from "../../store/store";
 
 function VideoCard({ v }) {
+  const dispatch = useDispatch();
+
   return (
-    <li key={v.id} className="video-list-description-row">
+    <li
+      key={v.id}
+      className="video-list-description-row"
+      onClick={() => dispatch(updateCurrentVideo(v))}
+    >
       <div className="columns">
         <div className="column is-5">
           <div class="video-thumbnail-container">
