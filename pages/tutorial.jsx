@@ -8,7 +8,7 @@ import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import { useFetchUser } from "../lib/user";
 import { useSelector, useDispatch } from "react-redux";
-import { updateCurrentVideo } from "../store/store";
+import { updateCurrentVideo, resetVideo } from "../store/store";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 

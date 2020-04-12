@@ -1,11 +1,18 @@
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { resetVideo } from "../../store/store";
 
 function TutorialCard({ tutorial }) {
+  const dispatch = useDispatch();
+
   return (
     <Link
       href={`/tutorial?playlist=${tutorial.playlist.playlist_id}&id=${tutorial.playlist.id}`}
     >
-      <div className="card tutorial-card">
+      <div
+        className="card tutorial-card"
+        onClick={() => dispatch(resetVideo())}
+      >
         <div className="card-image">
           <img src={tutorial.playlist.thumbnail} alt="video thumbnail" />
         </div>

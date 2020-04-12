@@ -21,11 +21,14 @@ const videos = createSlice({
   reducers: {
     updateCurrentVideo: (state, action) => {
       state.currentVideo = action.payload;
+    },
+    resetVideo: (state, action) => {
+      state.currentVideo = undefined;
     }
   }
 });
 
-export const { updateCurrentVideo } = videos.actions;
+export const { updateCurrentVideo, resetVideo } = videos.actions;
 
 const reducer = combineReducers({
   user: user.reducer,
