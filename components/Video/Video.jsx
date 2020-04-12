@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import NotesList from "../Notes/NotesList";
+// import { createAction } from "@reduxjs/toolkit";
+import { useSelector, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 
 const ADD_NOTE = gql`
   mutation MyMutation(
@@ -31,12 +34,24 @@ const ADD_NOTE = gql`
   }
 `;
 
+const useCurrentVideo = () => {
+  const currentVideo = useSelector(state => state.currentVideo);
+  const dispatch = useDispatch();
+  // const increment = () => dispatch(createAction('INCREMENT')())
+  // const decrement = () => dispatch(createAction('DECREMENT')())
+  // const reset = () => dispatch(createAction('RESET')())
+
+  return { currentVideo };
+};
+
 function Video({ video, user }) {
   const ref = useRef(null);
   const router = useRouter();
 
   const [currentNote, setNote] = useState("");
   const [timestamp, setTimestamp] = useState(null);
+  const { currentVideo } = useCurrentVideo();
+  const videoToShow = currentVideo != undefined ? currentVideo : video;
 
   const [addNote] = useMutation(ADD_NOTE, {
     refetchQueries: [
@@ -57,13 +72,14 @@ function Video({ video, user }) {
         `,
         variables: {
           user_id: user.sub,
-          video_id: video.snippet.resourceId.videoId
+          video_id: videoToShow.snippet.resourceId.videoId
         }
       }
     ]
   });
 
   useEffect(() => {
+    console.log(videoToShow);
     setTimestamp(Math.round(ref.current.getCurrentTime()));
   });
 
@@ -78,7 +94,7 @@ function Video({ video, user }) {
         note: currentNote,
         timestamp: timestamp,
         user_id: user.sub,
-        video_id: video.snippet.resourceId.videoId
+        video_id: videoToShow.snippet.resourceId.videoId
       }
     });
     setNote("");
@@ -98,7 +114,8 @@ function Video({ video, user }) {
           <ReactPlayer
             ref={ref}
             url={
-              "https://youtube.com/embed/" + video.snippet.resourceId.videoId
+              "https://youtube.com/embed/" +
+              videoToShow.snippet.resourceId.videoId
             }
             controls={true}
             muted={true}
@@ -138,11 +155,11 @@ function Video({ video, user }) {
           className="column is-5"
           style={{ maxHeight: "400px", overflow: "scroll" }}
         >
-          <NotesList user={user} selection={video} seek={handleSeekTo} />
+          <NotesList user={user} selection={videoToShow} seek={handleSeekTo} />
         </div>
       ) : null}
     </div>
   );
 }
 
-export default Video;
+export default connect(state => state)(Video);
