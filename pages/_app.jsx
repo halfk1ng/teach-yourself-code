@@ -57,7 +57,7 @@ const createApolloClient = () => {
 
 const client = createApolloClient();
 
-export default function MyApp({ Component, pageProps, router }) {
+export default function MyApp({ Component, pageProps }) {
   const { user } = useFetchUser();
 
   return (

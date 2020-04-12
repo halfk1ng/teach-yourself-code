@@ -4,19 +4,9 @@ import { useFetchUser } from "../lib/user";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 
-const useCurrentUser = () => {
-  const currentUser = useSelector(state => state.currentUser);
-  const dispatch = useDispatch();
-  // const increment = () => dispatch(createAction('INCREMENT')())
-  // const decrement = () => dispatch(createAction('DECREMENT')())
-  // const reset = () => dispatch(createAction('RESET')())
-
-  return { currentUser };
-};
-
 const Profile = () => {
   const { user, loading } = useFetchUser({ required: true });
-  const { currentUser } = useCurrentUser();
+  const currentUser = useSelector(state => state.user.currentUser);
 
   return (
     <Layout user={user} loading={loading}>
