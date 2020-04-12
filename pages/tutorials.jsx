@@ -26,9 +26,6 @@ function Tutorials(user) {
     variables: { topic: router.query.topic }
   });
 
-  console.log(data);
-  console.log(router.query.topic);
-
   return (
     <Layout user={user}>
       {loading ? (

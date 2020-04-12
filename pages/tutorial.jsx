@@ -52,10 +52,6 @@ function Tutorial({ videoList }) {
     (video, index) => index == videoList.indexOf(videoToShow) - 1
   );
 
-  useEffect(() => {
-    console.log(nextVideo);
-  });
-
   // methods for accessing GraphQL queries/mutations
   const [deletePlaylist] = useMutation(DELETE_PLAYLIST, {
     refetchQueries: [
