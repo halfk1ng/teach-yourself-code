@@ -3,26 +3,12 @@ import Loader from "../components/Loader";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-
-const FETCH_PLAYLISTS = gql`
-  query GetPlaylists($topic: String) {
-    playlists(where: { topic: { title: { _eq: $topic } } }) {
-      id
-      title
-      channel
-      description
-      thumbnail
-      playlist_id
-      topic_id
-    }
-  }
-`;
+import { fetchPlaylists } from "../lib/queries";
 
 function Tutorials(user) {
   const router = useRouter();
 
-  const { loading, error, data } = useQuery(FETCH_PLAYLISTS, {
+  const { loading, error, data } = useQuery(fetchPlaylists, {
     variables: { topic: router.query.topic }
   });
 

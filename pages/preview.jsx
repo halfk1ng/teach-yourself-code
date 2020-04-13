@@ -3,10 +3,11 @@ import Layout from "../components/Layout";
 import Router, { useRouter } from "next/router";
 import Video from "../components/Video/Video";
 import Description from "../components/Tutorial/Description";
-import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { useFetchUser } from "../lib/user";
-
+import { fetchUser } from "../lib/queries";
+import { addUserPlaylist } from "../lib/mutations";
+import gql from "graphql-tag";
 import Linkify from "react-linkify";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
@@ -20,44 +21,15 @@ Preview.getInitialProps = async ctx => {
   return { video: json.items[0], videos: json.items };
 };
 
-const FETCH_USER = gql`
-  query GetUser($email: String) {
-    users(where: { email: { _eq: $email } }) {
-      id
-      email
-      auth0_id
-      created_at
-    }
-  }
-`;
-
-const ADD_USER_PLAYLIST = gql`
-  mutation AddUserPlaylist($playlist_id: Int, $user_id: Int) {
-    insert_user_playlists(
-      objects: { playlist_id: $playlist_id, user_id: $user_id }
-    ) {
-      returning {
-        id
-        playlist_id
-        user_id
-      }
-    }
-  }
-`;
-
 function Preview({ video, videos }) {
   const { user, loading } = useFetchUser();
-  const [selection, setVideo] = useState(videos[0]);
-
   const router = useRouter();
 
-  if (user) {
-    const { error, data } = useQuery(FETCH_USER, {
-      variables: { email: user.name }
-    });
-  }
+  // const { error, data } = useQuery(fetchUser, {
+  //   variables: { email: user.name }
+  // });
 
-  const [addPlaylist] = useMutation(ADD_USER_PLAYLIST, {
+  const [addPlaylist] = useMutation(addUserPlaylist, {
     refetchQueries: [
       {
         query: gql`
@@ -112,12 +84,7 @@ function Preview({ video, videos }) {
           </div>
           <div className="columns top-preview-row">
             <div className="column video-column is-7">
-              <Video
-                video={video}
-                user={user}
-                setVideo={setVideo}
-                className="preview-video"
-              />
+              <Video video={video} user={user} className="preview-video" />
             </div>
             <div className="column description-column is-5">
               <Description video={video} />
@@ -129,7 +96,8 @@ function Preview({ video, videos }) {
                 addPlaylist({
                   variables: {
                     playlist_id: router.query.id,
-                    user_id: data.users[0].id
+                    // TODO: Replace hard-coded user id
+                    user_id: 2
                   }
                 }).then(() =>
                   Router.push(

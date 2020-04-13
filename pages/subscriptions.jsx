@@ -3,25 +3,10 @@ import Link from "next/link";
 import TutorialCard from "../components/Tutorial/TutorialCard";
 import { useQuery } from "@apollo/react-hooks";
 import { useFetchUser } from "../lib/user";
-import gql from "graphql-tag";
-
-const FETCH_USER_PLAYLISTS = gql`
-  query GetUserPlaylists {
-    user_playlists(where: { user_id: { _eq: 2 } }) {
-      playlist {
-        id
-        title
-        description
-        thumbnail
-        playlist_id
-        channel
-      }
-    }
-  }
-`;
+import { fetchUserPlaylists } from "../lib/queries";
 
 function Subscriptions() {
-  const { loading, error, data } = useQuery(FETCH_USER_PLAYLISTS);
+  const { loading, error, data } = useQuery(fetchUserPlaylists);
   const { user, loading: userLoading } = useFetchUser({ required: true });
 
   return (
