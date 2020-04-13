@@ -79,7 +79,7 @@ function Preview({ video, videos }) {
         </div>
         <div className="columns top-preview-row">
           <div className="column video-column is-7">
-            <Video video={video} user={user} className="preview-video" />
+            <Video video={video} className="preview-video" />
           </div>
           <div className="column description-column is-5">
             <Description video={video} />

@@ -60,7 +60,7 @@ function Video({ video, user }) {
           }
         `,
         variables: {
-          user_id: user.sub,
+          user_id: user ? user.sub : undefined,
           video_id: videoToShow.snippet.resourceId.videoId
         }
       }
@@ -68,7 +68,9 @@ function Video({ video, user }) {
   });
 
   useEffect(() => {
-    setTimestamp(Math.round(ref.current.getCurrentTime()));
+    if (user) {
+      setTimestamp(Math.round(ref.current.getCurrentTime()));
+    }
   });
 
   const handleGetCurrentTime = () => {
