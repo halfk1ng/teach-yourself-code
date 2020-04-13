@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../components/Layout";
 import Router, { useRouter } from "next/router";
 import Video from "../components/Video/Video";
 import Description from "../components/Tutorial/Description";
-import { useMutation } from "@apollo/react-hooks";
-import { useFetchUser } from "../lib/user";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { fetchUser } from "../lib/queries";
+import { useSelector } from "react-redux";
 import { addUserPlaylist } from "../lib/mutations";
 import gql from "graphql-tag";
 import Linkify from "react-linkify";
@@ -22,8 +22,8 @@ Preview.getInitialProps = async ctx => {
 };
 
 function Preview({ video, videos }) {
-  const { user, loading } = useFetchUser();
   const router = useRouter();
+  const user = useSelector(state => state.user.currentUser);
 
   // const { error, data } = useQuery(fetchUser, {
   //   variables: { email: user.name }
@@ -70,57 +70,51 @@ function Preview({ video, videos }) {
 
   return (
     <Layout user={user}>
-      {loading ? (
-        <h3 className="page-header is-size-5">
-          <b>Preview is loading!</b>
-        </h3>
-      ) : (
-        <div className="preview-container">
-          <div>
-            {/* TODO: This needs to the playlisy title */}
-            <h3 className="is-size-4">
-              <b>{video.snippet.title}</b>
-            </h3>
+      <div className="preview-container">
+        <div>
+          {/* TODO: This needs to the playlisy title */}
+          <h3 className="is-size-4">
+            <b>{video.snippet.title}</b>
+          </h3>
+        </div>
+        <div className="columns top-preview-row">
+          <div className="column video-column is-7">
+            <Video video={video} user={user} className="preview-video" />
           </div>
-          <div className="columns top-preview-row">
-            <div className="column video-column is-7">
-              <Video video={video} user={user} className="preview-video" />
-            </div>
-            <div className="column description-column is-5">
-              <Description video={video} />
-            </div>
-          </div>
-          {user ? (
-            <button
-              onClick={() =>
-                addPlaylist({
-                  variables: {
-                    playlist_id: router.query.id,
-                    // TODO: Replace hard-coded user id
-                    user_id: 2
-                  }
-                }).then(() =>
-                  Router.push(
-                    `/tutorial?playlist=${router.query.playlist}&id=${router.query.id}`
-                  )
-                )
-              }
-              className="button add-course-btn"
-            >
-              Add Course
-            </button>
-          ) : null}
-
-          <br />
-          <br />
-          <div className="tutorial-playlist-container">
-            <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
-              <b>Table of Contents</b>
-            </h3>
-            <ul className="tutorial-playlist">{videoList}</ul>
+          <div className="column description-column is-5">
+            <Description video={video} />
           </div>
         </div>
-      )}
+        {user ? (
+          <button
+            onClick={() =>
+              addPlaylist({
+                variables: {
+                  playlist_id: router.query.id,
+                  // TODO: Replace hard-coded user id
+                  user_id: 2
+                }
+              }).then(() =>
+                Router.push(
+                  `/tutorial?playlist=${router.query.playlist}&id=${router.query.id}`
+                )
+              )
+            }
+            className="button add-course-btn"
+          >
+            Add Course
+          </button>
+        ) : null}
+
+        <br />
+        <br />
+        <div className="tutorial-playlist-container">
+          <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
+            <b>Table of Contents</b>
+          </h3>
+          <ul className="tutorial-playlist">{videoList}</ul>
+        </div>
+      </div>
     </Layout>
   );
 }

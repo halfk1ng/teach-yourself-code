@@ -1,9 +1,19 @@
+import React, { useEffect } from "react";
 import Layout from "../components/Layout/index";
-import Link from "next/link";
 import { useFetchUser } from "../lib/user";
+import { useDispatch } from "react-redux";
+import { updateCurrentUser } from "../store/store";
 
 function Index() {
   const { user, loading } = useFetchUser();
+  const dispatch = useDispatch();
+
+  //  if signed-in user exists, add user to Redux state
+  useEffect(() => {
+    if (user) {
+      dispatch(updateCurrentUser(user));
+    }
+  });
 
   return (
     <Layout user={user} loading={loading}>

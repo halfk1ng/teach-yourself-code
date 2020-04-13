@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Video from "../components/Video/Video";
 import VideoList from "../components/Video/VideoList";
@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import { useFetchUser } from "../lib/user";
-import { useSelector, useDispatch } from "react-redux";
-import { updateCurrentVideo, resetVideo } from "../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCurrentVideo } from "../store/store";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
