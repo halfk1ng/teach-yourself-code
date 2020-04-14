@@ -102,51 +102,51 @@ function Tutorial({ videoList }) {
               />
             </button>
           </div>
-          {/* <div style={{ margin: "4em 0em" }}> */}
-          {/* <button
-            className="button add-course-btn"
-            onClick={() =>
-              removePlaylistFromSubscriptions({
-                variables: {
-                  id: router.query.id
-                }
-              }).then(() => router.push("/subscriptions"))
-            }
-          >
-            Remove Course
-          </button> */}
-          <br />
-          <br />
-          <div style={{ width: "100%" }}>
-            <div className="dropdown-trigger">
-              <button
-                className="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu6"
-                onClick={toggleDropdown}
-              >
-                <span>{isOpen ? "Close Playlist" : "View Playlist"}</span>
-                <span className="icon is-small">
-                  <FontAwesomeIcon
-                    icon="caret-down"
-                    className="dropdown-icon"
-                  />
-                </span>
-              </button>
+          <div style={{ margin: "4em 0em" }}>
+            <button
+              className="button add-course-btn"
+              onClick={() =>
+                removePlaylistFromSubscriptions({
+                  variables: {
+                    id: router.query.id
+                  }
+                }).then(() => router.push("/subscriptions"))
+              }
+            >
+              Remove Course
+            </button>
+            <br />
+            <br />
+            <div style={{ width: "100%" }}>
+              <div className="dropdown-trigger">
+                <button
+                  className="button"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu6"
+                  onClick={toggleDropdown}
+                >
+                  <span>{isOpen ? "Close Playlist" : "View Playlist"}</span>
+                  <span className="icon is-small">
+                    <FontAwesomeIcon
+                      icon="caret-down"
+                      className="dropdown-icon"
+                    />
+                  </span>
+                </button>
+              </div>
             </div>
-          </div>
-          <div
-            className="dropdown-menu"
-            id="dropdown-menu6"
-            role="menu"
-            className={isOpen ? "dropdown-active" : "dropdown-hidden"}
-          >
-            <div className="tutorial-playlist-container">
-              <VideoList videos={videoList} />
+            <div
+              className="dropdown-menu"
+              id="dropdown-menu6"
+              role="menu"
+              className={isOpen ? "dropdown-active" : "dropdown-hidden"}
+            >
+              <div className="tutorial-playlist-container">
+                <VideoList videos={videoList} />
+              </div>
             </div>
           </div>
         </div>
-        // </div>
       )}
     </Layout>
   );
