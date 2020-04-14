@@ -6,7 +6,7 @@
 2. Users will be able to 'subscribe' to tutorials/save them to their profile
 3. Users will be able to add notes to each video
 
-- Currently being built with Next.js (React), Postgres, Hasura Engine, Apollo-GraphQL, Bulma, and Auth0.
+- Currently being built with Next.js (React), Redux, Postgres, Hasura Engine, Apollo-GraphQL, Bulma, and Auth0.
 
 Priority TODOS:
 
