@@ -12,23 +12,48 @@ function Sidebar({ user, loading }) {
           <img src="/static/images/main-logo.png" alt="logo" className="logo" />
         </Link>
       </div>
-      <div className={router.route == "/" ? "nav-item-current" : "nav-item"}>
-        <Link href="/">
-          <FontAwesomeIcon icon="home" className="nav-icon" />
-        </Link>
-        <Link href="/">
-          <a
-            className={
-              router.route == "/"
-                ? "nav-text-current is-size-6"
-                : "nav-text is-size-6"
-            }
-            style={{ margin: ".5em 0em" }}
-          >
-            Home
-          </a>
-        </Link>
-      </div>
+      {user ? (
+        <div
+          className={
+            router.route == "/dashboard" ? "nav-item-current" : "nav-item"
+          }
+        >
+          <Link href="/dashboard">
+            <FontAwesomeIcon icon="home" className="nav-icon" />
+          </Link>
+          <Link href="/dashboard">
+            <a
+              className={
+                router.route == "/dashboard"
+                  ? "nav-text-current is-size-6"
+                  : "nav-text is-size-6"
+              }
+              style={{ margin: ".5em 0em" }}
+            >
+              Home
+            </a>
+          </Link>
+        </div>
+      ) : (
+        <div className={router.route == "/" ? "nav-item-current" : "nav-item"}>
+          <Link href="/">
+            <FontAwesomeIcon icon="home" className="nav-icon" />
+          </Link>
+          <Link href="/">
+            <a
+              className={
+                router.route == "/"
+                  ? "nav-text-current is-size-6"
+                  : "nav-text is-size-6"
+              }
+              style={{ margin: ".5em 0em" }}
+            >
+              Home
+            </a>
+          </Link>
+        </div>
+      )}
+
       <div
         className={router.route == "/about" ? "nav-item-current" : "nav-item"}
       >
@@ -126,7 +151,6 @@ function Sidebar({ user, loading }) {
           </div>
         ))}
     </div>
-  
   );
 }
 
