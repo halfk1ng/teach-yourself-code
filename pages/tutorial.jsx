@@ -18,7 +18,6 @@ Tutorial.getInitialProps = async ctx => {
     `https://www.googleapis.com/youtube/v3/playlistItems?part=id%2C%20snippet&maxResults=50&playlistId=${ctx.query.playlist}&key=${apiKey}`
   );
   const json = await res.json();
-  console.log(json.items);
   return { videoList: json.items };
 };
 
