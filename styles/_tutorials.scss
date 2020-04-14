@@ -63,6 +63,14 @@
   width: 24px;
 }
 
+.dropdown-active {
+  display: flex;
+}
+
+.dropdown-hidden {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   .tutorial-container {
     height: 100%;

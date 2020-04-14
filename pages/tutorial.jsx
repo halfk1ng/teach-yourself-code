@@ -9,6 +9,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { useFetchUser } from "../lib/user";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentVideo } from "../store/store";
+import { deletePlaylist } from "../lib/mutations";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -17,18 +18,9 @@ Tutorial.getInitialProps = async ctx => {
     `https://www.googleapis.com/youtube/v3/playlistItems?part=id%2C%20snippet&maxResults=50&playlistId=${ctx.query.playlist}&key=${apiKey}`
   );
   const json = await res.json();
+  console.log(json.items);
   return { videoList: json.items };
 };
-
-const DELETE_PLAYLIST = gql`
-  mutation DeletePlaylist($id: Int) {
-    delete_user_playlists(where: { playlist_id: { _eq: $id } }) {
-      returning {
-        id
-      }
-    }
-  }
-`;
 
 function Tutorial({ videoList }) {
   const router = useRouter();
@@ -36,7 +28,10 @@ function Tutorial({ videoList }) {
 
   // local state
   const [isOpen, setIsOpen] = useState(false);
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => {
+    console.log(isOpen);
+    setIsOpen(!isOpen);
+  };
 
   // functions for accessing/setting current video via Redux
   const dispatch = useDispatch();
@@ -53,7 +48,7 @@ function Tutorial({ videoList }) {
   );
 
   // methods for accessing GraphQL queries/mutations
-  const [deletePlaylist] = useMutation(DELETE_PLAYLIST, {
+  const [removePlaylistFromSubscriptions] = useMutation(deletePlaylist, {
     refetchQueries: [
       {
         query: gql`
@@ -107,25 +102,22 @@ function Tutorial({ videoList }) {
               />
             </button>
           </div>
-
+          {/* <div style={{ margin: "4em 0em" }}> */}
           {/* <button
-          className="button add-course-btn"
-          onClick={() =>
-            deletePlaylist({
-              variables: {
-                id: router.query.id
-              }
-            }).then(() => Router.push("/subscriptions"))
-          }
-        >
-          Remove Course
-        </button> */}
-          <br />
-          <br />
-          <div
-            className={isOpen ? "dropdown is-active" : "dropdown"}
-            style={{ width: "100%" }}
+            className="button add-course-btn"
+            onClick={() =>
+              removePlaylistFromSubscriptions({
+                variables: {
+                  id: router.query.id
+                }
+              }).then(() => router.push("/subscriptions"))
+            }
           >
+            Remove Course
+          </button> */}
+          <br />
+          <br />
+          <div style={{ width: "100%" }}>
             <div className="dropdown-trigger">
               <button
                 className="button"
@@ -142,13 +134,19 @@ function Tutorial({ videoList }) {
                 </span>
               </button>
             </div>
-            <div className="dropdown-menu" id="dropdown-menu6" role="menu">
-              <div className="tutorial-playlist-container">
-                <VideoList videos={videoList} />
-              </div>
+          </div>
+          <div
+            className="dropdown-menu"
+            id="dropdown-menu6"
+            role="menu"
+            className={isOpen ? "dropdown-active" : "dropdown-hidden"}
+          >
+            <div className="tutorial-playlist-container">
+              <VideoList videos={videoList} />
             </div>
           </div>
         </div>
+        // </div>
       )}
     </Layout>
   );
