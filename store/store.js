@@ -1,4 +1,4 @@
-import { configureStore, createReducer, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 
 const user = createSlice({
