@@ -4,7 +4,6 @@ import Router, { useRouter } from "next/router";
 import Video from "../components/Video/Video";
 import Description from "../components/Tutorial/Description";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-import { fetchUser } from "../lib/queries";
 import { useSelector } from "react-redux";
 import { addUserPlaylist } from "../lib/mutations";
 import gql from "graphql-tag";
@@ -12,7 +11,7 @@ import Linkify from "react-linkify";
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 
-Preview.getInitialProps = async ctx => {
+Preview.getInitialProps = async (ctx) => {
   const res = await fetch(
     `https://www.googleapis.com/youtube/v3/playlistItems?part=id%2C%20snippet&maxResults=50&playlistId=${ctx.query.playlist}&key=${apiKey}`
   );
@@ -23,7 +22,7 @@ Preview.getInitialProps = async ctx => {
 
 function Preview({ video, videos }) {
   const router = useRouter();
-  const user = useSelector(state => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   // const { error, data } = useQuery(fetchUser, {
   //   variables: { email: user.name }
@@ -45,12 +44,12 @@ function Preview({ video, videos }) {
               }
             }
           }
-        `
-      }
-    ]
+        `,
+      },
+    ],
   });
 
-  const videoList = videos.slice(1).map(v => (
+  const videoList = videos.slice(1).map((v) => (
     <li key={v.id} className="video-list-description-row">
       <div className="columns">
         <div className="column is-4">
@@ -69,7 +68,7 @@ function Preview({ video, videos }) {
   ));
 
   return (
-    <Layout user={user}>
+    <Layout>
       <div className="preview-container">
         <div>
           {/* TODO: This needs to the playlisy title */}
@@ -92,8 +91,8 @@ function Preview({ video, videos }) {
                 variables: {
                   playlist_id: router.query.id,
                   // TODO: Replace hard-coded user id
-                  user_id: 2
-                }
+                  user_id: 2,
+                },
               }).then(() =>
                 Router.push(
                   `/tutorial?playlist=${router.query.playlist}&id=${router.query.id}`

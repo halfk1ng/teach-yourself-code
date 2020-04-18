@@ -2,15 +2,14 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import TutorialCard from "../components/Tutorial/TutorialCard";
 import { useQuery } from "@apollo/react-hooks";
-import { useFetchUser } from "../lib/user";
 import { fetchUserPlaylists } from "../lib/queries";
+import { useSelector } from "react-redux";
 
 function Subscriptions() {
   const { loading, error, data } = useQuery(fetchUserPlaylists);
-  const { user, loading: userLoading } = useFetchUser({ required: true });
-
+  const user = useSelector((state) => state.user.currentUser);
   return (
-    <Layout user={user} className="is-flex">
+    <Layout className="is-flex">
       <div
         className="subscriptions-view is-flex"
         style={{ flexDirection: "column" }}
@@ -34,7 +33,7 @@ function Subscriptions() {
           </div>
         ) : (
           <ul className="subscriptions-list">
-            {data.user_playlists.map(up => (
+            {data.user_playlists.map((up) => (
               <li key={up.playlist.id}>
                 <TutorialCard tutorial={up} />
               </li>

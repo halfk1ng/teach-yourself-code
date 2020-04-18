@@ -32,14 +32,15 @@ const ADD_NOTE = gql`
   }
 `;
 
-function Video({ video, user }) {
+function Video({ video }) {
   const ref = useRef(null);
   const router = useRouter();
+  const user = useSelector((state) => state.user.currentUser);
 
   const [currentNote, setNote] = useState("");
   const [timestamp, setTimestamp] = useState(null);
 
-  const currentVideo = useSelector(state => state.videos.currentVideo);
+  const currentVideo = useSelector((state) => state.videos.currentVideo);
   const videoToShow = currentVideo != undefined ? currentVideo : video;
 
   const [addNote] = useMutation(ADD_NOTE, {
@@ -61,10 +62,10 @@ function Video({ video, user }) {
         `,
         variables: {
           user_id: user ? user.sub : undefined,
-          video_id: videoToShow.snippet.resourceId.videoId
-        }
-      }
-    ]
+          video_id: videoToShow.snippet.resourceId.videoId,
+        },
+      },
+    ],
   });
 
   useEffect(() => {
@@ -84,13 +85,13 @@ function Video({ video, user }) {
         note: currentNote,
         timestamp: timestamp,
         user_id: user.sub,
-        video_id: videoToShow.snippet.resourceId.videoId
-      }
+        video_id: videoToShow.snippet.resourceId.videoId,
+      },
     });
     setNote("");
   }
 
-  const handleSeekTo = value => {
+  const handleSeekTo = (value) => {
     ref.current.seekTo(value);
   };
 
@@ -123,7 +124,7 @@ function Video({ video, user }) {
                   type="textarea"
                   placeholder="Type something..."
                   value={currentNote}
-                  onChange={e => setNote(e.target.value)}
+                  onChange={(e) => setNote(e.target.value)}
                   className="note-input"
                 />
               </div>

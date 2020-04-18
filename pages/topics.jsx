@@ -1,12 +1,9 @@
 import Layout from "../components/Layout/index";
-import { useFetchUser } from "../lib/user";
 import Link from "next/link";
 
 function Topics() {
-  const { user, loading } = useFetchUser();
-
   return (
-    <Layout user={user} loading={loading}>
+    <Layout>
       <div className="topic-view">
         <h3 className="topic-header has-text-centered is-size-3">
           <b>What do you want to learn?</b>

@@ -9,18 +9,18 @@ function Tutorials(user) {
   const router = useRouter();
 
   const { loading, error, data } = useQuery(fetchPlaylists, {
-    variables: { topic: router.query.topic }
+    variables: { topic: router.query.topic },
   });
 
   return (
-    <Layout user={user}>
+    <Layout>
       {loading ? (
         <div>
           <Loader />
         </div>
       ) : (
         <ul className="playlists-list">
-          {data.playlists.map(playlist => (
+          {data.playlists.map((playlist) => (
             <li key={playlist.id}>
               <Link
                 href={`/preview?playlist=${playlist.playlist_id}&id=${playlist.id}`}

@@ -7,7 +7,6 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
-import { useFetchUser } from "../lib/user";
 
 import { config, library } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
@@ -21,7 +20,7 @@ import {
   faCaretDown,
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
-  faAtom
+  faAtom,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
@@ -48,22 +47,20 @@ const createApolloClient = () => {
       uri: "https://teach-yourself-code-hasura.herokuapp.com/v1/graphql",
       headers: {
         authorization: `Bearer ${authToken}`,
-        "x-hasura-admin-secret": `${adminSecret}`
-      }
+        "x-hasura-admin-secret": `${adminSecret}`,
+      },
     }),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
   });
 };
 
 const client = createApolloClient();
 
 export default function MyApp({ Component, pageProps }) {
-  const { user } = useFetchUser();
-
   return (
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <Component {...pageProps} user={user} />
+        <Component {...pageProps} />
       </Provider>
     </ApolloProvider>
   );

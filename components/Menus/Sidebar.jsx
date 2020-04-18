@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector } from "react-redux";
 
-function Sidebar({ user, loading }) {
+function Sidebar() {
   const router = useRouter();
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <div className="sidebar is-flex">
@@ -118,38 +120,37 @@ function Sidebar({ user, loading }) {
         </div>
       ) : null}
 
-      {!loading &&
-        (user ? (
-          <>
-            <div className="nav-item">
-              <Link href="/api/logout">
-                <FontAwesomeIcon icon="sign-out-alt" className="nav-icon" />
-              </Link>
-              <Link href="/api/logout">
-                <a
-                  className="nav-text has-text-white is-size-6"
-                  style={{ margin: ".5em 0em" }}
-                >
-                  Logout
-                </a>
-              </Link>
-            </div>
-          </>
-        ) : (
+      {user ? (
+        <>
           <div className="nav-item">
-            <Link href="/api/login">
-              <FontAwesomeIcon icon="user" className="nav-icon" />
+            <Link href="/api/logout">
+              <FontAwesomeIcon icon="sign-out-alt" className="nav-icon" />
             </Link>
-            <Link href="/api/login">
+            <Link href="/api/logout">
               <a
                 className="nav-text has-text-white is-size-6"
                 style={{ margin: ".5em 0em" }}
               >
-                Login
+                Logout
               </a>
             </Link>
           </div>
-        ))}
+        </>
+      ) : (
+        <div className="nav-item">
+          <Link href="/api/login">
+            <FontAwesomeIcon icon="user" className="nav-icon" />
+          </Link>
+          <Link href="/api/login">
+            <a
+              className="nav-text has-text-white is-size-6"
+              style={{ margin: ".5em 0em" }}
+            >
+              Login
+            </a>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
