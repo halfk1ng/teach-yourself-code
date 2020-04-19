@@ -1,11 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Loader = () => {
-  return (
-    <div className="loader">
-      <FontAwesomeIcon icon="atom" className="loading-icon" />
-    </div>
-  );
+  return <div className="loader"></div>;
 };
 
 export default Loader;

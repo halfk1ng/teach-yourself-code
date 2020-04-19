@@ -1,12 +1,23 @@
 @import "../variables";
 
 .loader {
-  height: 100%;
-  background: gray;
-  opacity: 0.6;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: $rueful-rose;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
 }
 
-.loading-icon {
-  height: 128px;
-  width: auto;
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
