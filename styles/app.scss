@@ -17,8 +17,8 @@
 @import "../styles/components/video.scss";
 @import "../styles/components/note_list";
 //  Google fonts
-// @import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
-// @import url("https://fonts.googleapis.com/css?family=Fira+Code|Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Fira+Code|Poppins&display=swap");
 
 .main-view {
   background-color: $bright-blue;
@@ -41,14 +41,14 @@
   padding: 1.75em;
 }
 
-// h3 {
-//   font-family: "Fira Code", monospace;
-// }
+h3 {
+  font-family: "Fira Code", monospace;
+}
 
-// h2 {
-//   font-family: "Fira Code", monospace;
-// }
+h2 {
+  font-family: "Fira Code", monospace;
+}
 
-// p {
-//   font-family: "Poppins", sans-serif;
-// }
+p {
+  font-family: "Poppins", sans-serif;
+}
