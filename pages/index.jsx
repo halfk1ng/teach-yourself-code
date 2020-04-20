@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Layout from "../components/Layout/index";
-import { useFetchUser } from "../lib/user";
 import { useDispatch } from "react-redux";
 import { updateCurrentUser } from "../store/store";
+import { useFetchUser } from "../lib/user";
 
 function Index() {
-  const { user, loading } = useFetchUser();
+  const { user } = useFetchUser();
   const dispatch = useDispatch();
 
   //  if signed-in user exists, add user to Redux state
@@ -16,7 +16,7 @@ function Index() {
   });
 
   return (
-    <Layout user={user} loading={loading}>
+    <Layout>
       <div className="home-view columns">
         {/*  touch view */}
         <div className="home-container-mobile is-hidden-desktop">
