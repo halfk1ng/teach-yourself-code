@@ -1,12 +1,19 @@
+import React, { useEffect } from "react";
 import Layout from "../components/Layout/index";
 import Loader from "../components/Loader";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useQuery } from "@apollo/react-hooks";
 import { fetchPlaylists } from "../lib/queries";
+import { useDispatch } from "react-redux";
+import { resetVideo } from "../store/store";
 
 function Tutorials(user) {
   const router = useRouter();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(resetVideo());
+  });
 
   const { loading, error, data } = useQuery(fetchPlaylists, {
     variables: { topic: router.query.topic },
