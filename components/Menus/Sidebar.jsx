@@ -10,9 +10,23 @@ function Sidebar() {
   return (
     <div className="sidebar is-flex">
       <div className="brand-name">
-        <Link href="/">
-          <img src="/static/images/main-logo.png" alt="logo" className="logo" />
-        </Link>
+        {user ? (
+          <Link href="/dashboard">
+            <img
+              src="/static/images/main-logo.png"
+              alt="logo"
+              className="logo"
+            />
+          </Link>
+        ) : (
+          <Link href="/">
+            <img
+              src="/static/images/main-logo.png"
+              alt="logo"
+              className="logo"
+            />
+          </Link>
+        )}
       </div>
       {user ? (
         <div
