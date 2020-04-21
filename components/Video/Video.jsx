@@ -5,32 +5,7 @@ import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import NotesList from "../Notes/NotesList";
 import { useSelector } from "react-redux";
-
-const ADD_NOTE = gql`
-  mutation MyMutation(
-    $note: String
-    $timestamp: Int
-    $user_id: String
-    $video_id: String
-  ) {
-    insert_notes(
-      objects: {
-        note: $note
-        timestamp: $timestamp
-        user_id: $user_id
-        video_id: $video_id
-      }
-    ) {
-      returning {
-        id
-        note
-        timestamp
-        video_id
-        user_id
-      }
-    }
-  }
-`;
+import { addNewNote } from "../../lib/mutations";
 
 function Video({ video }) {
   const ref = useRef(null);
@@ -43,7 +18,7 @@ function Video({ video }) {
   const currentVideo = useSelector((state) => state.videos.currentVideo);
   const videoToShow = currentVideo != undefined ? currentVideo : video;
 
-  const [addNote] = useMutation(ADD_NOTE, {
+  const [addNote] = useMutation(addNewNote, {
     refetchQueries: [
       {
         query: gql`
