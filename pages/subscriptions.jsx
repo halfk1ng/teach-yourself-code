@@ -6,8 +6,11 @@ import { fetchUserPlaylists } from "../lib/queries";
 import { useSelector } from "react-redux";
 
 function Subscriptions() {
-  const { loading, error, data } = useQuery(fetchUserPlaylists);
   const user = useSelector((state) => state.user.currentUser);
+  const { loading, error, data } = useQuery(fetchUserPlaylists, {
+    variables: { email: user.name },
+  });
+
   return (
     <Layout className="is-flex">
       <div
