@@ -44,6 +44,14 @@ function Topics() {
               className="topic-graphic"
             />
           </Link>
+          <Link href="tutorials?topic=Svelte">
+            <img
+              src="/static/images/svelte.png"
+              alt="svelte graphic"
+              className="topic-graphic"
+              style={{ border: "1px solid lightgray" }}
+            />
+          </Link>
           <Link href="tutorials?topic=Node">
             <img
               src="/static/images/node.png"
