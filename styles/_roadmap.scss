@@ -1,0 +1,10 @@
+@import "../styles//variables";
+
+.roadmap-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmap-section {
+  margin: 0.75em 0em;
+}
