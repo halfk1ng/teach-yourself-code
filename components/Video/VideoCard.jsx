@@ -15,7 +15,7 @@ function VideoCard({ v }) {
         <div className="column is-5">
           <div className="video-thumbnail-container">
             <img
-              src={v.snippet.thumbnails.high.url}
+              src={v.snippet.thumbnails.default.url}
               alt="video thumbnail"
               className="video-thumbnail"
             />
