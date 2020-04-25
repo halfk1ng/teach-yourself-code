@@ -40,9 +40,9 @@
 }
 
 .video-list-description-row {
-  margin: 1em 0em;
+  width: 95%;
+  margin: 1em auto;
   border: 0.5px solid lightgray;
-  border-radius: 7px;
   box-shadow: 3px 6px 8px lightgrey;
   .description-column {
     text-overflow: ellipsis;

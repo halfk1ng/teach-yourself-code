@@ -25,9 +25,6 @@ function VideoCard({ v }) {
           <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
             <b>{v.snippet.title}</b>
           </h3>
-          <p className=" is-size-6-desktop is-7-mobile">
-            {<Linkify>{v.snippet.description}</Linkify>}
-          </p>
         </div>
       </div>
     </li>
