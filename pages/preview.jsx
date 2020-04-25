@@ -16,7 +16,6 @@ Preview.getInitialProps = async (ctx) => {
     `https://www.googleapis.com/youtube/v3/playlistItems?part=id%2C%20snippet&maxResults=50&playlistId=${ctx.query.playlist}&key=${apiKey}`
   );
   const json = await res.json();
-
   return { video: json.items[0], videos: json.items };
 };
 
@@ -53,15 +52,15 @@ function Preview({ video, videos }) {
     <li key={v.id} className="video-list-description-row">
       <div className="columns">
         <div className="column is-4">
-          <img src={v.snippet.thumbnails.high.url} alt="video thumbnail" />
+          <img
+            src={v.snippet.thumbnails ? v.snippet.thumbnails.default.url : null}
+            alt="video thumbnail"
+          />
         </div>
         <div className="column video-list-description">
-          <h3 className="title">
+          <h3 className="is-size-5">
             <b>{v.snippet.title}</b>
           </h3>
-          <p className=" is-size-6-desktop is-size-7-mobile">
-            <Linkify>{v.snippet.description}</Linkify>
-          </p>
         </div>
       </div>
     </li>
@@ -108,7 +107,10 @@ function Preview({ video, videos }) {
         <br />
         <br />
         <div className="tutorial-playlist-container">
-          <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
+          <h3
+            className="is-size-5 has-text-centered"
+            style={{ margin: ".5em 0em" }}
+          >
             <b>Table of Contents</b>
           </h3>
           <ul className="tutorial-playlist">{videoList}</ul>
