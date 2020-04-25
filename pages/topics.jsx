@@ -5,7 +5,7 @@ function Topics() {
   return (
     <Layout>
       <div className="topic-view">
-        <h3 className="topic-header has-text-centered is-size-3">
+        <h3 className="title topic-header has-text-centered">
           <b>What do you want to learn?</b>
         </h3>
         <div className="topics-container">

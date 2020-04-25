@@ -76,7 +76,7 @@ function Tutorial({ videoList }) {
         <div className="tutorial-container">
           <div>
             {/* TODO: This needs to the playlist title */}
-            <h3 className="is-size-4">
+            <h3 className="title">
               <b>{videoToShow.snippet.title}</b>
             </h3>
           </div>

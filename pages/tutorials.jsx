@@ -38,7 +38,7 @@ function Tutorials(user) {
                   </div>
                   <div className="card-content">
                     <div className="content">
-                      <h2 className="is-size-5">{playlist.title}</h2>
+                      <h3 className="title">{playlist.title}</h3>
                       <p>by {playlist.channel}</p>
                     </div>
                   </div>
