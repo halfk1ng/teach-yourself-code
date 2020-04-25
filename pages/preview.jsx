@@ -56,7 +56,7 @@ function Preview({ video, videos }) {
           <img src={v.snippet.thumbnails.high.url} alt="video thumbnail" />
         </div>
         <div className="column video-list-description">
-          <h3 className="is-size-5">
+          <h3 className="title">
             <b>{v.snippet.title}</b>
           </h3>
           <p className=" is-size-6-desktop is-size-7-mobile">

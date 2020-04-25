@@ -15,7 +15,7 @@ function Subscriptions() {
         style={{ flexDirection: "column" }}
       >
         {user ? (
-          <h3 className="subscriptions-header is-size-3 is-size-5-touch">
+          <h3 className="subscriptions-header title is-size-3 is-size-5-touch">
             Hello, <b>{user.nickname} 👋</b>! Here are your tutorials.
           </h3>
         ) : (

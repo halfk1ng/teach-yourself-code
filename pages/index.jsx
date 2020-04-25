@@ -28,7 +28,7 @@ function Index() {
               className="home-main-text is-size-3 has-text-centered"
               style={{ color: "#1a1b25" }}
             >
-              Learn to code for free with our online platform!
+              Learn to code for free with curated video tutorials!
             </h3>
             <div className="is-flex" style={{ justifyContent: "center" }}>
               <a className="signup-btn" href="/api/login">
@@ -44,7 +44,7 @@ function Index() {
             className="home-main-text is-size-2 is-size-4-mobile has-text-centered-touch"
             style={{ color: "#1a1b25" }}
           >
-            Learn to code for free with our online platform!
+            Learn to code for free with curated video tutorials!
           </h3>
           <a className="signup-btn" href="/api/login">
             CREATE AN ACCOUNT
