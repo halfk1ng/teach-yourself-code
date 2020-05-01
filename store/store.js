@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 const user = createSlice({
   name: "user",
   initialState: {
-    currentUser: undefined,
+    currentUser: null,
   },
   reducers: {
     updateCurrentUser: (state, action) => {
@@ -16,7 +16,7 @@ const user = createSlice({
 const videos = createSlice({
   name: "videos",
   initialState: {
-    currentVideo: undefined,
+    currentVideo: null,
   },
   reducers: {
     updateCurrentVideo: (state, action) => {
