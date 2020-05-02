@@ -61,6 +61,15 @@
   font-family: "Fira Code", monospace;
 }
 
+.nav-text:hover {
+  color: $whitman-white;
+  transform: scale(1.1);
+}
+
+.nav-text-current:hover {
+  transform: scale(1.1);
+}
+
 @media only screen and (max-width: 1200px) {
   .nav-text {
     display: none;
