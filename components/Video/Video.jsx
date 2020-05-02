@@ -84,7 +84,6 @@ function Video({ video }) {
               videoToShow.snippet.resourceId.videoId
             }
             controls={true}
-            muted={true}
             playing={true}
             className="react-player"
             width="100%"
