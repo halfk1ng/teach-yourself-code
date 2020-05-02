@@ -15,7 +15,7 @@ function Layout({ children }) {
   const { user, loading, error } = useFetchUser();
   const { data, loading: loadingId, error: idError } = useQuery(fetchUser, {
     variables: {
-      email: user ? user.name : null,
+      sub: user ? user.sub : null,
     },
   });
 
