@@ -7,8 +7,9 @@ import { useSelector } from "react-redux";
 
 function Subscriptions() {
   const user = useSelector((state) => state.user.currentUser);
+  const userId = useSelector((state) => state.user.userId);
   const { loading, error, data } = useQuery(fetchUserPlaylists, {
-    variables: { email: user ? user.name : null },
+    variables: { user_id: userId ? userId : null },
   });
 
   return (

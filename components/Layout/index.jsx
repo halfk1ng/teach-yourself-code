@@ -4,16 +4,27 @@ import BottomBar from "../Menus/BottomBar";
 import View from "../View/index";
 import { useFetchUser } from "../../lib/user";
 import { useDispatch } from "react-redux";
-import { updateCurrentUser } from "../../store/store";
+import { useQuery } from "@apollo/react-hooks";
+import { updateCurrentUser, updatedUserId } from "../../store/store";
+import { fetchUser } from "../../lib/queries";
 import "../../styles/app.scss";
 
 // Global styles and component-specific styles.
 
 function Layout({ children }) {
   const { user, loading, error } = useFetchUser();
+  const { data, loading: loadingId, error: idError } = useQuery(fetchUser, {
+    variables: {
+      email: user ? user.name : null,
+    },
+  });
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updateCurrentUser(user));
+    if (data) {
+      dispatch(updatedUserId(data.users[0].id));
+    }
   });
 
   return (

@@ -22,17 +22,14 @@ Preview.getInitialProps = async (ctx) => {
 function Preview({ video, videos }) {
   const router = useRouter();
   const user = useSelector((state) => state.user.currentUser);
-
-  // const { error, data } = useQuery(fetchUser, {
-  //   variables: { email: user.name }
-  // });
+  const userId = useSelector((state) => state.user.userId);
 
   const [addPlaylist] = useMutation(addUserPlaylist, {
     refetchQueries: [
       {
         query: gql`
-          query GetUserPlaylists {
-            user_playlists(where: { user_id: { _eq: 2 } }) {
+          query GetUserPlaylists($user_id: Int) {
+            user_playlists(where: { user_id: { _eq: $user_id } }) {
               playlist {
                 id
                 title
@@ -44,6 +41,9 @@ function Preview({ video, videos }) {
             }
           }
         `,
+        variables: {
+          user_id: userId ? userId : undefined,
+        },
       },
     ],
   });
@@ -89,8 +89,7 @@ function Preview({ video, videos }) {
               addPlaylist({
                 variables: {
                   playlist_id: router.query.id,
-                  // TODO: Replace hard-coded user id
-                  user_id: 2,
+                  user_id: userId,
                 },
               }).then(() =>
                 Router.push(
