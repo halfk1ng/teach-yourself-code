@@ -26,27 +26,30 @@ function Tutorials(user) {
           <Loader />
         </div>
       ) : (
-        <ul className="playlists-list">
-          {data.playlists.map((playlist) => (
-            <li key={playlist.id}>
-              <Link
-                href={`/preview?playlist=${playlist.playlist_id}&id=${playlist.id}`}
-              >
-                <div className="card tutorial-card">
-                  <div className="card-image">
-                    <img src={playlist.thumbnail} alt="video thumbnail" />
-                  </div>
-                  <div className="card-content">
-                    <div className="content">
-                      <h3 className="title">{playlist.title}</h3>
-                      <p>by {playlist.channel}</p>
+        <div className="tutorials-view has-text-centered">
+          <h3 className="title">Tutorials</h3>
+          <ul className="playlists-list">
+            {data.playlists.map((playlist) => (
+              <li key={playlist.id}>
+                <Link
+                  href={`/preview?playlist=${playlist.playlist_id}&id=${playlist.id}`}
+                >
+                  <div className="card tutorial-card">
+                    <div className="card-image">
+                      <img src={playlist.thumbnail} alt="video thumbnail" />
+                    </div>
+                    <div className="card-content">
+                      <div className="content">
+                        <h3 className="title">{playlist.title}</h3>
+                        <p>by {playlist.channel}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </Layout>
   );
