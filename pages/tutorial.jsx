@@ -50,8 +50,8 @@ function Tutorial({ videoList }) {
     refetchQueries: [
       {
         query: gql`
-          query GetUserPlaylists {
-            user_playlists(where: { user_id: { _eq: 2 } }) {
+          query GetUserPlaylists($email: String) {
+            user_playlists(where: { email: { _eq: $email } }) {
               playlist {
                 id
                 title
@@ -63,6 +63,9 @@ function Tutorial({ videoList }) {
             }
           }
         `,
+        variables: {
+          email: user ? user.name : undefined,
+        },
       },
     ],
   });
