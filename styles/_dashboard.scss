@@ -1,1 +1,12 @@
-@import "../styles//variables";
+@import "../styles/variables";
+
+.dashboard-view {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+  height: 100vh;
+}
