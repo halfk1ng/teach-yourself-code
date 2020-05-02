@@ -8,11 +8,11 @@ function VideoCard({ v }) {
   return (
     <li
       key={v.id}
-      className="video-list-description-row"
+      className="card video-card"
       onClick={() => dispatch(updateCurrentVideo(v))}
     >
-      <div className="columns">
-        <div className="column is-5">
+      <div className="card-content columns">
+        <div className="column is-4">
           <div className="video-thumbnail-container">
             <img
               src={v.snippet.thumbnails.default.url}
@@ -21,10 +21,12 @@ function VideoCard({ v }) {
             />
           </div>
         </div>
-        <div className="column video-list-description">
-          <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
-            <b>{v.snippet.title}</b>
-          </h3>
+        <div className="column">
+          <div className="video-card-header">
+            <h3 className="is-size-5" style={{ margin: ".5em 0em" }}>
+              <b>{v.snippet.title}</b>
+            </h3>
+          </div>
         </div>
       </div>
     </li>

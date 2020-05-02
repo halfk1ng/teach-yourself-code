@@ -12,12 +12,16 @@
 }
 
 .video-thumbnail {
-  height: 100%;
-  cursor: pointer;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
 }
 
 .video-thumbnail-container {
   height: 100%;
+}
+
+.video-card {
+  width: 50%;
+  margin: 1em;
+  cursor: pointer;
 }
