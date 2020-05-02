@@ -28,7 +28,6 @@ function Tutorial({ videoList }) {
   // local state
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {
-    console.log(isOpen);
     setIsOpen(!isOpen);
   };
 
