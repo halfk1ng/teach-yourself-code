@@ -26,18 +26,19 @@ export default function About() {
             being built (yes, it's a work in progress!). One, to give users a
             place where they can <i>focus entirely</i> on the video at hand, and
             two, to <i>eliminate decision paralysis</i> by providing a curation
-            of videos by reputable instructors.{" "}
+            of videos by reputable instructors.
           </p>
           <p className="is-block" style={{ margin: ".75em" }}>
             Teach Yourself Code is built on React and GraphQL. I'm way more
             familiar with Vue, so I decided to use React to become more familiar
             with it. As such, the code is messy. Tests are almost non-existent
             as this point. And best practices aren't always followed. You can
-            view the source code{" "}
+            view the source code &nbsp;
             <a
               href="https://github.com/jamesctucker/teach-yourself-code"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
             >
               here
             </a>
@@ -50,10 +51,11 @@ export default function About() {
               href="https://twitter.com/tucker_dev"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
             >
-              Twitter!
+              Twitter
             </a>
-            .
+            !
           </p>
         </div>
       </div>
