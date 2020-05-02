@@ -12,7 +12,8 @@ Priority TODOS:
 
 ## To Get It Up And Running Locally
 
-```yarn install
+```
+   yarn install
    yarn run dev
 ```
 ## Build for Production
