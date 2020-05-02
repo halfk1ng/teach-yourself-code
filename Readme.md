@@ -10,6 +10,13 @@
 
 Priority TODOS:
 
-- [ ] Move GraphQL queries to separate modules.
-- [ ] Institute global state for current_user data
-- [ ] Turn Preview and Tutorial Pages into a single reusable component
+## To Get It Up And Running Locally
+
+```yarn install
+   yarn run dev
+```
+## Build for Production
+
+```
+  yarn run build
+```
