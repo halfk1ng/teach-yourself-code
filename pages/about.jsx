@@ -7,10 +7,7 @@ export default function About() {
         className="about-view"
         style={{ display: "flex", flexDirection: "column" }}
       >
-        <div
-          className="text-container"
-          style={{ width: "60%", margin: "0 auto" }}
-        >
+        <div className="text-container">
           <h3 className="title" style={{ margin: "1em .25em" }}>
             About
           </h3>
@@ -54,7 +51,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Twitter
+              Twitter!
             </a>
             .
           </p>
